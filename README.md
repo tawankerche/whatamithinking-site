@@ -1,12 +1,13 @@
-what am i thinking?
+## what am i thinking?
 
 a customizable web experience that simulates a small operating system, bringing together personal tools, music, memories and everyday organization in one interactive environment.
 about the project
 
-what am i thinking? is a personal project inspired by desktop operating systems. it recreates the experience of using a small virtual operating system through a customizable interface, interactive windows, widgets and personalized elements.
+*what am i thinking?* is a personal project inspired by desktop operating systems. it recreates the experience of using a small virtual operating system through a customizable interface, interactive windows, widgets and personalized elements.
 
 the idea is to combine functionality and visual identity in a space where users can organize their content and customize their digital environment.
-features
+
+## features:
 
     desktop interface: an operating-system-inspired environment.
 
@@ -24,7 +25,7 @@ features
 
     interactive interface: draggable elements and customizable components.
 
-technologies
+## technologies
 
     HTML5
 
@@ -37,6 +38,21 @@ development status
 <ins>currently in development.</ins>
 
 new features, visual improvements and functionality updates are still being implemented. the project is continuously evolving.
-deployment
+
+## upcoming updates
+
+the following features are planned for future releases:
+
+    language support: portuguese (pt-br) and japanese.
+
+    mobile compatibility: improved layout and accessibility for mobile devices.
+
+    friends list: implementation of the friends list feature, allowing users to access and manage their friends.
+
+these features are planned and currently subject to development.
+
+## deployment
 
 hosted using GitHub Pages.
+
+
