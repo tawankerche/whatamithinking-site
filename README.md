@@ -33,7 +33,7 @@ the idea is to combine functionality and visual identity in a space where users 
 
     JavaScript
 
-development status
+## development status
 
 <ins>currently in development.</ins>
 
