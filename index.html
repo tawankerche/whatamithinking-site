@@ -1,0 +1,878 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>what am i thinking?</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+:root{--page:#f4f3f1;--panel:#d9d7d7;--white:#fff;--blue:#c2d8e7;--blue-deep:#6ca1c1;--ink:#080808;--muted:#e8e7e7;--pink:#c88d9b;--shadow:0 2px 8px #00000008}
+*{box-sizing:border-box}body{margin:0;background:#fff;color:var(--ink);font-family:Nunito,Arial,sans-serif;font-weight:800}.stage{width:min(100%,1600px);min-height:100vh;margin:auto;padding:3.1vh 3.8vw;background:var(--page);border-radius:24px;display:grid;grid-template-columns:1.08fr 1.08fr 1.08fr 1.45fr 112px;gap:2.55vw;position:relative;overflow:hidden}.column{min-width:0;display:flex;flex-direction:column;gap:3.8vh}.nav-title{height:7.4vh;min-height:54px;display:flex;align-items:center;justify-content:center;font-size:clamp(19px,1.6vw,30px);position:relative}.nav-title:after{content:"";height:3px;width:42px;background:#111;position:absolute;bottom:12px;border-radius:4px}.panel{background:var(--panel);border-radius:23px;padding:15px;position:relative;min-width:0}.phone{height:40.5vh;min-height:310px;max-height:470px}.inner{background:#fff;border-radius:20px;height:100%;padding:14px;position:relative;overflow:hidden}.home .inner{display:flex;flex-direction:column;align-items:center}.calendar{width:57px;height:57px;margin:0 auto 3px}.pill{background:#e7e6e6;border-radius:22px;padding:4px 12px;font-size:clamp(9px,.7vw,12px);line-height:1.2;text-align:center}.folders{display:flex;flex-direction:column;gap:11px;margin-top:auto;margin-bottom:5px;width:100%}.folder-row{display:grid;grid-template-columns:48px 1fr;align-items:center;gap:8px;cursor:pointer}.folder-row svg{width:48px;height:43px;stroke:#000;stroke-width:1.8;fill:none}.folder-row .pill{font-size:clamp(10px,.78vw,13px);padding:8px 7px;color:#fff;background:#d9d7d7;transition:.15s}.folder-row.active .pill,.folder-row:hover .pill{background:#bdbabb;color:#111}.homebar{position:absolute;bottom:5px;left:calc(50% - 17px);width:34px;height:4px;background:white;border-radius:4px}.chat-panel{display:flex;flex-direction:column;gap:8px}.chat-heading{display:flex;align-items:center;gap:10px;font-size:clamp(15px,1.35vw,23px);padding:0 4px}.avatar{width:42px;height:42px;object-fit:contain;border-radius:50%;background:#fff}.edit{margin-left:auto;border:0;background:transparent;cursor:pointer;font-size:15px}.chat-window{background:#fff;border-radius:20px;flex:1;min-height:0;padding:11px;position:relative;display:flex;flex-direction:column;gap:10px}.bubble{font-size:10px;background:#e8e7e7;padding:8px 12px;border-radius:15px;font-weight:700;align-self:flex-end;max-width:75%}.chat-line{display:flex;align-items:center;gap:8px;font-size:10px}.chat-line .bubble{align-self:center}.heart{color:#c98d9a;font-size:20px;position:absolute;top:28px;right:43%;}.yes{width:42px;height:55px;object-fit:contain;position:absolute;left:44%;top:78px}.chat-spacer{flex:1}.chat-input{border:0;border-top:1px solid #eee;padding:8px 4px;font:700 11px Nunito;width:100%;outline:none}.music-panel{height:40.5vh;min-height:310px;max-height:470px;background:var(--blue);border-radius:23px;padding:10px 18px;display:flex;flex-direction:column;align-items:center}.listening{font-size:clamp(13px,1.1vw,18px);color:#fff;margin-top:-4px}.album{width:100%;height:42%;object-fit:cover;object-position:center;border-radius:8px;margin-top:2px}.track{background:var(--blue-deep);color:#fff;border-radius:20px;padding:6px 12px;font-size:clamp(9px,.8vw,13px);margin-top:5px;white-space:nowrap}.controls{display:flex;align-items:center;justify-content:center;gap:19px;margin-top:11px;color:var(--blue-deep)}.icon-btn{border:0;background:transparent;color:inherit;cursor:pointer;padding:0;font-size:22px;line-height:1}.play{font-size:34px}.seek{width:70%;accent-color:#fff;margin-top:5px}.music-actions{display:flex;gap:8px;margin-top:7px;font-size:17px}.music-actions button{border:0;background:none;cursor:pointer;color:#77a6c0}.music-actions button:first-child{color:#c66d7d}.short-homebar{width:34px;height:4px;background:#fff;border-radius:4px;margin-top:auto}.wide-column{gap:3.8vh}.search{height:7.4vh;min-height:54px;display:flex;align-items:center}.searchbox{height:46px;border-radius:20px;background:#fff;display:flex;align-items:center;padding:0 14px;width:100%;gap:10px}.searchbox input{border:0;outline:0;font:600 18px Nunito;min-width:0;width:100%;background:transparent}.searchbox button{border:0;background:none;cursor:pointer;font-size:23px}.camera-area{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;gap:18px;min-height:360px}.camera-title{border-radius:22px;background:#e7e6e6;padding:10px 20px;font-size:clamp(14px,1.2vw,20px);white-space:nowrap}.camera{width:min(100%,350px);position:relative;cursor:pointer}.camera img{width:100%;height:auto;display:block}.camera-photos{position:absolute;left:10.5%;top:14%;width:61%;height:72%;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:3px;overflow:hidden;clip-path:inset(0 round 2px)}.camera-photos img{width:100%;height:100%;object-fit:cover;border-radius:8px}.bottom-grid{display:grid;grid-template-columns:1.08fr 1.08fr 1.08fr 1.45fr 112px;gap:2.55vw;position:absolute;left:3.8vw;right:calc(3.8vw + 112px + 2.55vw);bottom:3.4vh;pointer-events:none}.bottom-card{pointer-events:auto;min-width:0}.note-panel,.draw-panel{height:28.8vh;min-height:220px;max-height:330px;background:var(--panel);border-radius:23px;padding:9px;display:flex;flex-direction:column}.bottom-title{text-align:center;font-size:clamp(17px,1.5vw,25px);line-height:1.1;margin-bottom:4px}.paper{background:white;border-radius:18px;flex:1;padding:11px 18px;min-height:0}.paper textarea{resize:none;border:0;outline:0;width:100%;height:100%;font:700 13px Nunito;line-height:2.15;background:repeating-linear-gradient(to bottom,transparent 0,transparent 21px,#111 22px,#111 23px);padding:0;color:#111}.paper textarea::placeholder{color:#111;text-decoration:underline}.draw-paper{background:#fff;border-radius:18px;flex:1;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-around;align-items:center}.draw-paper img{max-width:85%;max-height:48%;object-fit:contain}.draw-paper canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:crosshair}.draw-tools{display:flex;justify-content:center;align-items:center;gap:5px;margin:0 0 5px}.draw-tools button{border:0;background:#fff;border-radius:8px;padding:3px 7px;font:700 10px Nunito;cursor:pointer}.draw-tools input[type=color]{width:24px;height:22px;border:0;padding:0;background:transparent;cursor:pointer}.social-stack{display:flex;flex-direction:column;gap:14px}.friends-panel,.saved-panel{background:var(--panel);border-radius:22px;padding:7px 10px;position:relative}.friends-panel{height:13.8vh;min-height:108px}.friends-list{display:flex;justify-content:space-around;gap:5px;margin-top:7px}.friend{width:clamp(40px,4.4vw,66px);height:clamp(40px,4.4vw,66px);border-radius:50%;background:white;position:relative;display:flex;align-items:center;justify-content:center;overflow:visible}.friend img{width:100%;height:100%;object-fit:contain;border-radius:50%}.status{position:absolute;width:10px;height:10px;border-radius:50%;background:#9ecab1;border:1px solid white;bottom:0;left:0}.status.busy{background:#d4a0a7}.status.away{background:#e5d073}.plus{position:absolute;right:9px;bottom:2px;border:0;background:none;font-size:18px;cursor:pointer;padding:0}.saved-panel{height:13.8vh;min-height:108px}.saved-icons{height:52px;background:#fff;border-radius:12px;display:flex;align-items:center;justify-content:space-evenly;margin:7px auto 0;width:82%;font-size:28px}.saved-icons a{color:#000;text-decoration:none}.rightbar{background:#d8d6d6;border-radius:23px;position:relative;min-height:92vh;display:flex;flex-direction:column;align-items:center;padding:12px 7px}.profile{display:flex;align-items:center;justify-content:center;width:100%;position:relative}.profile img{width:76px;height:76px;border-radius:50%;background:#fff;object-fit:contain}.thought{position:absolute;right:calc(100% - 22px);top:0;background:#e5e4e4;border-radius:22px;padding:8px 10px;font-size:11px;text-align:center;width:93px;z-index:2}.thought:after{content:"";position:absolute;right:-6px;top:18px;border-left:9px solid #e5e4e4;border-top:6px solid transparent;border-bottom:6px solid transparent}.online{position:absolute;bottom:1px;left:11px;width:16px;height:16px;border-radius:50%;background:#9ecab1;border:1px solid white}.side-icons{display:flex;flex-direction:column;gap:42px;align-items:center;margin-top:13vh;color:#efeeee}.side-icons button{border:0;background:none;color:inherit;font-size:36px;cursor:pointer;opacity:.9}.date{margin-top:auto;text-align:center;font-size:12px;line-height:1.35;font-weight:800;white-space:nowrap}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#222;color:#fff;padding:10px 16px;border-radius:20px;font-size:13px;z-index:10;display:none}.modal{display:none;position:fixed;inset:0;background:#0005;z-index:9;align-items:center;justify-content:center;padding:20px}.modal.open{display:flex}.modal-box{background:#f5f4f2;border-radius:22px;padding:22px;width:min(380px,100%);box-shadow:0 15px 60px #0002}.modal-box h3{margin:0 0 12px}.modal-box input{width:100%;padding:12px;border:1px solid #ddd;border-radius:12px;font:600 14px Nunito}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}.modal-actions button{border:0;border-radius:16px;padding:8px 14px;font:800 13px Nunito;cursor:pointer}.modal-actions button:last-child{background:#d9d7d7}
+@media(min-width:1500px){.stage{padding-left:3.8vw;padding-right:3.8vw}}@media(max-width:1050px){.stage{grid-template-columns:1fr 1fr 1fr 1.3fr 82px;gap:16px;padding:20px}.bottom-grid{left:20px;right:118px;gap:16px}.panel{padding:10px}.phone,.music-panel{min-height:290px}.camera-area{min-height:300px}.camera-title{white-space:normal;text-align:center}.rightbar{min-height:94vh}.thought{width:75px;font-size:9px}.profile img{width:60px;height:60px}}@media(max-width:760px){.stage{display:flex;flex-direction:column;padding:14px;border-radius:0;gap:18px;overflow:visible}.column{gap:10px}.nav-title{height:42px;min-height:42px}.nav-title:after{bottom:0}.phone,.music-panel{height:360px;max-height:none}.inner{padding:16px}.wide-column{gap:12px}.search{height:48px;min-height:48px}.camera-area{min-height:0;padding:10px 0}.camera{max-width:320px}.bottom-grid{position:static;display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:0}.bottom-card{min-width:0}.note-panel,.draw-panel{height:280px;max-height:none}.social-stack{gap:12px}.friends-panel,.saved-panel{height:130px}.rightbar{min-height:280px;padding:14px}.profile{justify-content:flex-start;padding-left:8px}.thought{left:85px;right:auto;width:auto;min-width:100px}.side-icons{flex-direction:row;justify-content:space-evenly;margin-top:22px;gap:10px;width:100%}.date{margin-top:22px}.bottom-grid .bottom-card:nth-child(4){grid-column:1/-1}.bottom-grid .bottom-card:nth-child(5){grid-column:1/-1}.bottom-grid{grid-template-columns:1fr 1fr}.social-stack{display:grid;grid-template-columns:1fr 1fr}.friends-panel,.saved-panel{height:150px}}
+
+/* functional controls added for the personalized dashboard */
+.nav-title{cursor:pointer}.nav-title:hover{transform:translateY(-1px)}
+.profile-edit,.edit-shortcuts,.manage-photos{border:0;background:#ffffffb8;border-radius:12px;padding:5px 9px;font:700 11px Nunito;cursor:pointer;color:#222}
+.profile-edit{position:absolute;right:0;top:-5px;z-index:3}.edit-shortcuts{margin-top:16px}.manage-photos{margin-top:-8px}
+.friends-panel{overflow:hidden}.friends-list{overflow:auto;align-items:center;padding-bottom:4px}.friend-card{position:relative;flex:0 0 auto;cursor:pointer;border:0;background:transparent;padding:0}.friend-card .friend{overflow:hidden}.friend-card .friend-name{display:block;font-size:9px;text-align:center;max-width:66px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-top:2px}.friend-card .status{pointer-events:none}.friend-menu{display:flex;gap:3px;justify-content:center}.friend-menu button{border:0;background:#fff8;border-radius:7px;font-size:10px;cursor:pointer}
+.saved-icons{overflow:auto;justify-content:flex-start;gap:8px;padding:5px}.saved-item{min-width:36px;height:40px;border:0;background:#f5f4f2;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-direction:column;cursor:pointer;padding:3px;font-size:17px}.saved-item span{font-size:8px;max-width:48px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.camera-photos img{cursor:pointer}.camera-photos img:hover{outline:2px solid #fff}.search-results{display:none;position:fixed;top:95px;left:50%;transform:translateX(-50%);width:min(520px,92vw);max-height:55vh;overflow:auto;background:#f7f6f4;border:1px solid #dedbd8;border-radius:18px;padding:12px;z-index:8;box-shadow:0 12px 40px #0002}.search-results.open{display:block}.search-result{display:flex;gap:10px;align-items:center;padding:9px;border-radius:10px;cursor:pointer;font-size:13px}.search-result:hover{background:#e8e7e7}.search-result small{display:block;color:#777;font-weight:600}.search-empty{padding:12px;font-size:13px;color:#666}.modal-box{max-height:85vh;overflow:auto}.modal-fields{display:flex;flex-direction:column;gap:10px}.modal-box label{display:block;font-size:12px;margin:9px 0 5px}.modal-box input,.modal-box select,.modal-box textarea{width:100%;padding:10px 12px;border:1px solid #ddd;border-radius:12px;font:600 14px Nunito;background:#fff}.modal-box textarea{min-height:80px;resize:vertical}.modal-box input[type=file]{font-size:12px}.modal-help{font-size:11px;color:#666;font-weight:600;margin-top:5px}.saved-empty{font-size:10px;font-weight:600;color:#666}.item-actions{display:flex;gap:5px;margin-top:5px}.item-actions button{font-size:10px;border:0;background:#fff;border-radius:7px;padding:4px 6px;cursor:pointer}
+@media(max-width:760px){.search-results{top:70px}.rightbar{overflow:visible}.friends-panel{min-width:0}.saved-icons{width:100%}.manage-photos{margin-top:0}}
+
+/* layout corrections: restore notes/draw and keep photo tiles inside the camera LCD */
+.bottom-grid{grid-template-columns:1.08fr 1.08fr 1.08fr 1.45fr;right:calc(3.8vw + 112px + 2.55vw);align-items:start}
+.bottom-grid .bottom-card{display:block}
+.bottom-grid .bottom-card:nth-child(1){grid-column:1;grid-row:1}
+.bottom-grid .bottom-card:nth-child(2){grid-column:2;grid-row:1}
+.bottom-grid .bottom-card.social-stack{grid-column:4;grid-row:1;display:flex}
+.camera{width:min(100%,330px)}
+.camera-photos{left:11.5%;top:15.5%;width:59%;height:67%;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:2px;padding:1px;overflow:hidden;clip-path:inset(0 round 1px)}
+.camera-photos img{width:100%;height:100%;min-width:0;min-height:0;object-fit:contain;border-radius:2px;background:#fff}
+.draw-tools{position:relative;z-index:2}
+.draw-paper{min-height:0}
+#draw-canvas{display:block;width:100%;height:100%;touch-action:none}
+#notes-text{font:700 13px Nunito;line-height:2.15}
+@media(max-width:1050px){.bottom-grid{left:20px;right:118px;grid-template-columns:1fr 1fr 1fr;gap:16px}.bottom-grid .bottom-card:nth-child(1){grid-column:1}.bottom-grid .bottom-card:nth-child(2){grid-column:2}.bottom-grid .bottom-card.social-stack{grid-column:3}}
+@media(max-width:760px){.bottom-grid{position:static;display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:0}.bottom-grid .bottom-card:nth-child(1){grid-column:1}.bottom-grid .bottom-card:nth-child(2){grid-column:2}.bottom-grid .bottom-card.social-stack{grid-column:1/-1;display:grid}.camera-photos{left:11.5%;top:15.5%;width:59%;height:67%}}
+/* user-added content controls */
+#chat-form{display:flex;align-items:center;gap:5px;border-top:1px solid #eee}.chat-sender{border:0;background:#f4f3f1;border-radius:10px;padding:5px 3px;font:700 10px Nunito;max-width:55px}.chat-input{border-top:0;flex:1;min-width:0}.send-message{border:0;background:#e8e7e7;border-radius:50%;width:25px;height:25px;cursor:pointer;font-size:18px}.chat-window .bubble{position:relative;padding-right:22px}.chat-window .bubble.mine{align-self:flex-end;background:#dce9f1}.chat-window .bubble.theirs{align-self:flex-start;background:#e8e7e7}.chat-msg{display:flex;align-items:flex-end;gap:6px;max-width:100%}.chat-msg.other{align-self:flex-start}.chat-msg.me{align-self:flex-end}.chat-msg img{width:25px;height:25px;object-fit:cover;border-radius:50%}.chat-msg .bubble{max-width:78%;overflow-wrap:anywhere}.chat-heading .avatar{object-fit:cover}.music-upload{border:0;border-radius:15px;padding:4px 9px;background:#fff8;color:#416d86;font:800 10px Nunito;cursor:pointer;margin-top:5px}.music-panel audio{width:100%;height:28px;margin-top:4px}.bottom-grid{grid-template-columns:1.08fr 1.08fr 1.08fr 1.45fr 112px}.bottom-grid .bottom-card{display:none}.bottom-grid .bottom-card.social-stack{display:flex;grid-column:4;grid-row:1}.calendar{cursor:pointer}.calendar:hover{opacity:.65}.date{font-variant-numeric:tabular-nums}
+@media(max-width:760px){.bottom-grid{display:block}.bottom-grid .bottom-card.social-stack{display:grid}.chat-msg .bubble{font-size:11px}.music-upload{font-size:12px}}
+
+/* final layout override */
+@media(min-width:761px){.bottom-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1.25fr;right:calc(3.8vw + 112px + 2.55vw)}.bottom-grid .bottom-card{display:block}.bottom-grid .bottom-card:nth-child(1){grid-column:1}.bottom-grid .bottom-card:nth-child(2){grid-column:2}.bottom-grid .bottom-card.social-stack{grid-column:4;grid-row:1}}
+@media(max-width:760px){.bottom-grid{position:static;display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:0}.bottom-grid .bottom-card:nth-child(1){grid-column:1}.bottom-grid .bottom-card:nth-child(2){grid-column:2}.bottom-grid .bottom-card.social-stack{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr}.camera-photos{left:11.5%;top:15.5%;width:59%;height:67%}}
+
+/* refinements requested: camera screen fit, music queue and friends/saved position */
+.camera{width:min(100%,390px);cursor:default}.camera>img{width:100%;height:auto;display:block}.camera-photos{left:10.2%;top:12.9%;width:59.5%;height:77.1%;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:4px;overflow:hidden;clip-path:inset(0 round 13px);padding:3px}.camera-photos img{border-radius:10px;object-fit:cover;min-width:0;min-height:0}.music-panel{background:var(--panel);color:#171717;overflow:hidden}.listening{color:var(--music-ink,#222)}.track{color:var(--music-ink,#222)}.controls{color:var(--music-ink,#526c7a)}.volume-row{color:var(--music-ink,#222)}.album{flex:0 0 auto;width:min(72%,180px);height:auto;aspect-ratio:1;object-fit:cover;border-radius:14px;margin:3px auto 0}.track{width:100%;max-width:100%;overflow:hidden;white-space:nowrap;display:flex;gap:18px;justify-content:flex-start;background:transparent;color:#161616;border-radius:0;padding:5px 0;font-size:12px}.track span{display:inline-block;flex-shrink:0;min-width:100%;animation:track-marquee 12s linear infinite}.track:hover span{animation-play-state:paused}@keyframes track-marquee{from{transform:translateX(0)}to{transform:translateX(-100%)}}.controls{gap:14px;margin-top:3px;color:#526c7a}.seek{width:90%;margin-top:3px;accent-color:#526c7a}.music-upload{background:#fff9;color:#405f70}.cover-upload{margin-top:2px}.volume-row{width:90%;display:flex;align-items:center;justify-content:center;gap:8px;font-size:10px;font-weight:800}.volume-row input{width:65%;accent-color:#526c7a}.music-queue{position:absolute;z-index:5;bottom:30px;left:8%;width:84%;max-height:40%;overflow:auto;background:#fff;border-radius:12px;padding:8px;box-shadow:0 4px 18px #0002;font-size:11px}.queue-item{display:flex;gap:8px;align-items:center;padding:6px;border-bottom:1px solid #eee;cursor:pointer}.queue-item.active{background:#e5eef3;border-radius:8px}.queue-item span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.music-panel{position:relative}.bottom-grid{grid-template-columns:1fr 1fr 1.08fr;left:3.8vw;right:auto;width:58%}.bottom-grid .bottom-card:nth-child(1){grid-column:1;grid-row:1}.bottom-grid .bottom-card:nth-child(2){grid-column:2;grid-row:1}.bottom-grid .bottom-card.social-stack{grid-column:3;grid-row:1;display:flex}.social-stack{gap:14px}.friends-panel,.saved-panel{min-width:0}.friend-name{font-size:9px;max-width:60px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.saved-icons{overflow:auto;justify-content:flex-start;gap:8px;padding:0 8px}.saved-item{flex:0 0 auto;max-width:76px;display:flex;flex-direction:column;align-items:center;gap:2px;border:0;background:transparent;font:700 9px Nunito;cursor:pointer}.saved-item span{max-width:70px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.camera-photos img{cursor:pointer}.camera-photos img:focus{outline:2px solid #6ca1c1;outline-offset:-2px}
+@media(max-width:1050px){.bottom-grid{width:auto;right:118px;grid-template-columns:1fr 1fr 1fr}.bottom-grid .bottom-card.social-stack{grid-column:3}.camera-photos{left:10.2%;top:12.9%;width:59.5%;height:77.1%}}
+@media(max-width:760px){.bottom-grid{width:auto;right:auto}.bottom-grid .bottom-card.social-stack{grid-column:1/-1}.music-panel{height:420px}.camera-photos{left:10.2%;top:12.9%;width:59.5%;height:77.1%}}
+
+</style><style>
+/* final requested refinements */
+.music-panel{border-radius:26px!important;gap:2px;overflow:visible!important;}
+.music-panel .album-empty{display:block;flex:0 0 auto;width:min(66%,168px);aspect-ratio:1;height:auto;margin:5px auto 2px;border:0;border-radius:17px;background:#fff;overflow:hidden;padding:0;cursor:pointer;box-shadow:0 1px 5px #00000012}
+.music-panel .album-empty img{width:100%;height:100%;object-fit:cover;border-radius:17px}
+.music-panel .track{border-radius:18px;background:color-mix(in srgb,var(--music-ink,#222) 10%,transparent);padding:7px 12px;min-height:30px;align-items:center}
+.music-panel .controls{width:100%;margin:5px 0 2px;gap:17px}
+.music-panel .seek,.music-panel .volume-row input{accent-color:var(--music-ink,#526c7a)}
+.music-panel .seek{height:7px;border-radius:20px;overflow:hidden}
+.music-panel .volume-row{border-radius:18px;padding:5px 10px;background:color-mix(in srgb,var(--music-ink,#222) 9%,transparent)}
+.music-panel .volume-row input{border-radius:20px;height:6px}
+.music-panel .music-queue{position:static!important;left:auto;bottom:auto;width:100%;max-height:92px;flex:0 0 auto;margin:3px 0 0;background:color-mix(in srgb,var(--music-ink,#222) 9%,white 35%);border-radius:15px;box-shadow:none;padding:5px 8px}
+.music-panel .queue-item{border-color:#ffffff55;border-radius:9px;font-size:10px}
+.music-panel .queue-item.active{background:#ffffff80}
+.music-panel .short-homebar{margin-top:auto}
+.date{text-align:right!important;align-self:flex-end;padding-right:7px}
+.side-icons button{width:48px;height:48px;display:grid;place-items:center;font-size:0!important;color:#f5f4f2!important}
+.side-icons button svg{width:36px;height:36px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.side-icons button:hover{color:#fff!important;transform:scale(1.07)}
+.crop-overlay{position:fixed;inset:0;background:#0009;z-index:30;display:none;align-items:center;justify-content:center;padding:18px}
+.crop-overlay.open{display:flex}.crop-box{width:min(440px,96vw);max-height:92vh;overflow:auto;background:#f6f5f2;border-radius:22px;padding:18px;box-shadow:0 15px 60px #0004}
+.crop-box h3{margin:0 0 12px;font:800 17px Nunito}.crop-preview{width:min(78vw,330px);aspect-ratio:1;margin:0 auto 14px;overflow:hidden;border-radius:15px;background:#fff;position:relative;touch-action:none}
+.crop-preview img{width:100%;height:100%;object-fit:cover;transform-origin:center;user-select:none;pointer-events:none}
+.crop-grid{position:absolute;inset:0;pointer-events:none;background:linear-gradient(to right,transparent 33.1%,#fff9 33.3%,transparent 33.8%,transparent 66.1%,#fff9 66.4%,transparent 66.8%),linear-gradient(to bottom,transparent 33.1%,#fff9 33.3%,transparent 33.8%,transparent 66.1%,#fff9 66.4%,transparent 66.8%);border:1px solid #fff9}
+.crop-controls{display:grid;grid-template-columns:1fr;gap:8px;font:700 12px Nunito}.crop-controls label{display:flex;align-items:center;gap:10px}.crop-controls input{flex:1;min-width:0;accent-color:#6c91a7}.crop-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}.crop-actions button{border:0;border-radius:14px;padding:9px 15px;font:800 12px Nunito;cursor:pointer}.crop-actions button:last-child{background:#d8d6d6}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.gallery-card{min-width:0;background:#fff;border-radius:12px;padding:6px;font:700 10px Nunito}.gallery-card img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:8px;display:block}.gallery-card small{display:block;margin-top:4px;color:#666;overflow-wrap:anywhere}
+</style>
+<style id="v17-visible-shortcuts-fix">
+/* keep the sidebar actions visible and legible in every theme */
+.rightbar{overflow:visible!important;min-height:92vh;isolation:isolate;padding:12px 7px 16px!important}
+.side-icons{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:flex-start!important;gap:clamp(14px,2.2vh,22px)!important;margin-top:clamp(22px,5vh,48px)!important;width:100%;flex:0 0 auto}
+.side-icons button{width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;display:flex!important;align-items:center!important;justify-content:center!important;padding:7px!important;border:1px solid color-mix(in srgb,var(--ink) 22%,transparent)!important;border-radius:14px!important;background:var(--surface)!important;color:var(--shortcut-ink,var(--ink))!important;opacity:1!important;box-shadow:0 2px 8px #00000018!important;transition:transform .15s,box-shadow .15s!important}
+.side-icons button:hover{transform:translateY(-2px);box-shadow:0 4px 12px #00000025!important}
+.side-icons button svg{display:block!important;width:27px!important;height:27px!important;fill:none!important;stroke:currentColor!important;stroke-width:2.5!important;stroke-linecap:round!important;stroke-linejoin:round!important;overflow:visible!important}
+.theme-picker{flex:0 0 auto!important;margin:clamp(16px,2.5vh,24px) 0 8px!important;z-index:20!important}
+.theme-trigger{display:flex!important;align-items:center!important;justify-content:center!important;width:42px!important;height:42px!important;background:var(--surface)!important;color:var(--shortcut-ink,var(--ink))!important;border:1px solid color-mix(in srgb,var(--ink) 22%,transparent)!important}
+.edit-shortcuts{display:block!important;flex:0 0 auto!important;position:relative!important;z-index:2!important;width:100%!important;max-width:100%!important;min-height:32px!important;margin:8px 0 14px!important;padding:7px 5px!important;border:1px solid color-mix(in srgb,var(--ink) 24%,transparent)!important;border-radius:12px!important;background:var(--accent)!important;color:var(--shortcut-ink,var(--ink))!important;font:800 10px Nunito, sans-serif!important;line-height:1.2!important;white-space:normal!important;cursor:pointer!important;box-shadow:0 2px 7px #00000012!important}
+.date{flex:0 0 auto!important;margin-top:auto!important}
+body[data-theme="strawberry-matcha"]{--shortcut-ink:#3b241b}
+body[data-theme="thorned-fae"]{--shortcut-ink:#fff0e8}
+body[data-theme="cyber-blue"]{--shortcut-ink:#eaf4ff}
+body[data-theme="midnight"]{--shortcut-ink:#f3e9ec}
+@media(max-width:1050px){.side-icons{margin-top:22px!important;gap:14px!important}.side-icons button{width:40px!important;height:40px!important;min-width:40px!important;min-height:40px!important}.side-icons button svg{width:25px!important;height:25px!important}.edit-shortcuts{font-size:9px!important}}
+</style>
+
+</head>
+<body>
+<main class="stage">
+  <section class="column">
+    <div class="nav-title">home</div>
+    <div class="panel phone home"><div class="inner">
+      <svg class="calendar" data-action="open-calendar" role="button" tabindex="0" aria-label="open calendar" viewBox="0 0 64 64" fill="none" stroke="black" stroke-width="3" stroke-linecap="round"><rect x="8" y="12" width="48" height="45" rx="4"/><path d="M20 5v14M44 5v14M8 24h48"/><path d="M19 33h4m7 0h4m7 0h4M19 42h4m7 0h4m7 0h4M19 50h4m7 0h4"/></svg>
+      <div class="pill">you have an event at 12PM</div>
+      <div class="folders">
+        <div class="folder-row" data-folder="EVERYTHING"><svg viewBox="0 0 52 44"><path d="M3 10a4 4 0 0 1 4-4h13l5 5h20a4 4 0 0 1 4 4v22H3z"/><path d="M3 14h46"/></svg><div class="pill">EVERYTHING</div></div>
+        <div class="folder-row" data-folder="IMPORTANT"><svg viewBox="0 0 52 44"><path d="M3 10a4 4 0 0 1 4-4h13l5 5h20a4 4 0 0 1 4 4v22H3z"/><path d="M3 14h46"/></svg><div class="pill">IMPORTANT</div></div>
+        <div class="folder-row" data-folder="TODAY"><svg viewBox="0 0 52 44"><path d="M3 10a4 4 0 0 1 4-4h13l5 5h20a4 4 0 0 1 4 4v22H3z"/><path d="M3 14h46"/></svg><div class="pill">TODAY</div></div>
+      </div><div class="homebar"></div></div></div>
+  </section>
+  <section class="column">
+    <div class="nav-title">chat</div>
+    <div class="panel phone chat-panel"><div class="chat-heading"><img class="avatar" id="chat-other-avatar" src="assets/img_15.png" alt="chat contact"><span id="chat-other-name">mi lover</span><button class="edit" data-action="edit-chat" aria-label="edit chat">✎</button></div>
+      <div class="chat-window"><div class="chat-spacer"></div><form id="chat-form"><select id="chat-sender" class="chat-sender" aria-label="who is sending"><option value="me">me</option><option value="other">them</option></select><input class="chat-input" id="chat-input" placeholder="message..." aria-label="message"><button class="send-message" type="submit" aria-label="add message">＋</button></form></div><div class="homebar"></div></div>
+  </section>
+  <section class="column">
+    <div class="nav-title">music</div>
+    <div class="music-panel"><div class="listening">now listening to</div><button class="album album-empty" id="music-art-button" type="button" aria-label="choose album cover"><img id="music-art" alt="album artwork" hidden></button><input id="cover-file" type="file" accept="image/*" hidden><div class="track" id="music-track">choose a music file</div><input id="music-file" type="file" accept="audio/*" multiple hidden><button class="music-upload" type="button" data-action="add-music">＋ add music file</button><audio id="audio-player" controls hidden></audio><div class="controls"><div class="transport-controls"><button class="icon-btn skip" data-action="prev" aria-label="previous song">⏪</button><button class="icon-btn play" id="play-btn" data-action="play" aria-label="play or pause">Ⅱ</button><button class="icon-btn skip" data-action="next" aria-label="next song">⏩</button></div><button class="icon-btn queue-toggle" data-action="open-queue" aria-label="open queue" title="queue">☷</button></div><input class="seek" id="music-seek" type="range" min="0" max="100" value="0" aria-label="track progress"><label class="volume-row">volume <input id="music-volume" type="range" min="0" max="1" step="0.01" value="0.8" aria-label="volume"></label><div id="music-queue" class="music-queue" hidden></div><div class="music-actions"><button data-action="dislike" aria-label="dislike">⊘</button><button data-action="like" aria-label="like">✓</button></div><div class="short-homebar"></div></div>
+  </section>
+  <section class="column wide-column">
+    <div class="search"><form class="searchbox" id="search-form"><input id="search-input" placeholder="search" aria-label="search site"><button aria-label="search">⌕</button></form></div>
+    <div class="camera-area"><div class="camera-title">YourPicture choices</div><div class="camera" data-action="photos" title="manage picture choices"><img src="assets/camera-frame.jpg" alt="silver Sony digital camera"><div class="camera-photos" id="camera-photos"><img src="assets/img_03.png" alt="photo 1"><img src="assets/img_05.png" alt="photo 2"><img src="assets/img_07.png" alt="photo 3"><img src="assets/img_04.png" alt="photo 4"><img src="assets/img_06.png" alt="photo 5"><img src="assets/img_07.png" alt="photo 6"></div></div><button class="manage-photos" data-action="photos">＋ edit pictures</button></div>
+  </section>
+  <aside class="rightbar"><div class="profile"><button class="profile-edit" data-action="edit-profile" aria-label="edit profile">✎</button><div class="thought" id="thought">what am i<br>thinking?</div><div class="profile-avatar-frame"><img id="profile-image" src="assets/img_14.png" alt="profile picture"></div><span class="online"></span></div><div class="side-icons" id="side-icons"><button data-action="open-chat" aria-label="chat" title="chat">◌</button><button data-action="open-music" aria-label="music" title="music">♫</button><button data-action="open-photos" aria-label="gallery" title="gallery">▧</button></div><div class="theme-picker" id="theme-picker"><button class="theme-trigger" id="theme-trigger" type="button" aria-expanded="false" aria-label="choose theme" title="choose theme"><svg viewBox="0 0 32 32" aria-hidden="true" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4C8.8 4 3 9.4 3 16.1 3 22.3 7.7 27 13.2 27h2.1c1.7 0 2.6-1.8 1.6-3.1-.9-1.2-.1-2.9 1.4-2.9H22c4 0 7-3.1 7-7C29 8.5 23.2 4 16 4Z"/><circle cx="9.5" cy="13" r="1.4" fill="currentColor"/><circle cx="14" cy="8.8" r="1.4" fill="currentColor"/><circle cx="20" cy="9.5" r="1.4" fill="currentColor"/><circle cx="23.2" cy="14.5" r="1.4" fill="currentColor"/></svg></button><div class="theme-options" id="theme-options" hidden><div class="theme-options-title">choose a theme</div><button class="theme-option" type="button" data-theme="dday"><span class="theme-preview dday-preview"><i></i><i></i><i></i></span><span>DDAY</span></button><button class="theme-option" type="button" data-theme="strawberry-matcha"><span class="theme-preview strawberry-preview"><i></i><i></i><i></i></span><span>strawberry matcha</span></button><button class="theme-option" type="button" data-theme="thorned-fae"><span class="theme-preview thorned-preview"><i></i><i></i><i></i></span><span>thorned fae</span></button><button class="theme-option" type="button" data-theme="cyber-blue"><span class="theme-preview cyber-preview"><i></i><i></i><i></i></span><span>cyber blue</span></button><button class="theme-option" type="button" data-theme="midnight"><span class="theme-preview midnight-preview"><i></i><i></i><i></i></span><span>MiDNIGHT</span></button></div></div><button class="edit-shortcuts" data-action="edit-shortcuts">edit shortcuts</button><div class="date" id="date-widget"><div id="date-time"></div><div id="date-day"></div><div id="date-full"></div></div></aside>
+  <section class="bottom-grid">
+    <div class="bottom-card"><div class="note-panel"><div class="bottom-title">notes</div><div class="paper"><textarea id="notes-text" placeholder="write something..." aria-label="notes"></textarea></div></div></div>
+    <div class="bottom-card"><div class="draw-panel"><div class="bottom-title">draw</div><div class="draw-tools"><button type="button" data-draw="pen">pen</button><button type="button" data-draw="eraser">eraser</button><input id="draw-color" type="color" value="#111111" aria-label="drawing color"><button type="button" data-draw="clear">clear</button></div><div class="draw-paper"><canvas id="draw-canvas" aria-label="drawing area"></canvas></div></div></div>
+    <div class="bottom-card social-stack"><div class="friends-panel"><div class="bottom-title">friends</div><div class="friends-list" id="friends-list"></div><button class="plus" data-action="add-friend" aria-label="add friend">+</button></div><div class="saved-panel"><div class="bottom-title">saved</div><div class="saved-icons" id="saved-icons" aria-label="saved items"></div><button class="plus" data-action="add-saved" aria-label="add saved link">+</button></div></div>
+  </section>
+</main>
+<div class="toast" id="toast" role="status"></div>
+<div class="modal" id="modal" aria-modal="true" role="dialog"><div class="modal-box"><h3 id="modal-title">edit item</h3><form id="modal-form"><div id="modal-fields"></div><div class="modal-actions"><button type="button" id="cancel-modal">cancel</button><button type="submit">save</button></div></form></div></div><div class="search-results" id="search-results" aria-live="polite"></div>
+<style id="theme-picker-styles">
+:root{--outer:#f4f3f1;--stage:#f4f3f1;--panel:#d9d7d7;--surface:#fff;--accent:#c2d8e7;--ink:#080808;--muted:#e8e7e7;--side:#d8d6d6;--line:#111;--soft-ink:#555}
+body{background:var(--outer)!important;color:var(--ink)!important}.stage{background:var(--stage)!important;color:var(--ink)!important}.panel,.note-panel,.draw-panel,.friends-panel,.saved-panel{background:var(--panel)!important;color:var(--ink)!important}.inner,.paper,.draw-paper,.chat-window,.searchbox,.saved-icons{background:var(--surface)!important;color:var(--ink)!important}.rightbar{background:var(--side)!important;color:var(--ink)!important}.nav-title:after{background:var(--ink)!important}.folder-row svg{stroke:var(--ink)!important}.folder-row .pill{background:var(--panel)!important;color:var(--ink)!important}.folder-row.active .pill,.folder-row:hover .pill{background:var(--accent)!important;color:var(--ink)!important}.camera-title,.pill,.bubble,.track{background:var(--accent)!important;color:var(--ink)!important}.thought{background:var(--muted)!important;color:var(--ink)!important}.thought:after{border-left-color:var(--muted)!important}.searchbox input,.paper textarea{color:var(--ink)!important}.paper textarea{background:repeating-linear-gradient(to bottom,transparent 0,transparent 21px,var(--ink) 22px,var(--ink) 23px)!important}.paper textarea::placeholder{color:var(--ink)!important}.side-icons{color:var(--accent)!important}.side-icons button{color:inherit!important}.edit-shortcuts,.manage-photos,.music-upload{background:var(--accent)!important;color:var(--ink)!important}.theme-picker{position:relative;display:flex;justify-content:center;margin:clamp(15px,3vh,30px) 0 16px;z-index:12}.theme-trigger{width:42px;height:42px;border:0;border-radius:15px;background:var(--panel);color:var(--ink);font-size:25px;cursor:pointer;box-shadow:0 2px 8px #00000012;transition:transform .15s}.theme-trigger:hover{transform:rotate(-10deg) scale(1.05)}.theme-options{position:absolute;top:calc(100% + 10px);right:0;width:min(270px,calc(100vw - 36px));padding:12px;background:var(--panel);border:1px solid #ffffff55;border-radius:20px;box-shadow:0 12px 35px #0003;display:flex;flex-direction:column;gap:6px}.theme-options[hidden]{display:none}.theme-options-title{font-size:11px;text-align:center;color:var(--ink);padding:3px 0 7px}.theme-option{display:flex;align-items:center;gap:10px;width:100%;border:0;border-radius:13px;padding:7px 9px;background:var(--surface);color:var(--ink);font:800 11px Nunito;cursor:pointer;text-align:left}.theme-option:hover,.theme-option.active{outline:2px solid var(--accent)}.theme-preview{height:30px;width:52px;border-radius:8px;overflow:hidden;display:flex;flex:0 0 52px}.theme-preview i{flex:1}.strawberry-preview i:nth-child(1){background:#9bbcb7}.strawberry-preview i:nth-child(2){background:#e8b6b9}.strawberry-preview i:nth-child(3){background:#ead6d9}.thorned-preview i:nth-child(1){background:#2d1036}.thorned-preview i:nth-child(2){background:#6b0733}.thorned-preview i:nth-child(3){background:#e77d4e}.cyber-preview i:nth-child(1){background:#17264a}.cyber-preview i:nth-child(2){background:#252a35}.cyber-preview i:nth-child(3){background:#4a90d9}.midnight-preview i:nth-child(1){background:#572c3c}.midnight-preview i:nth-child(2){background:#302d33}.midnight-preview i:nth-child(3){background:#888b8e}
+body[data-theme="strawberry-matcha"]{--outer:#e1c8cf;--stage:#9bbcb7;--panel:#e8b6b9;--surface:#ead6d9;--accent:#e8b6b9;--ink:#3b241b;--muted:#e7c8cf;--side:#e8b6b9;--line:#3b241b;--soft-ink:#68483e}
+body[data-theme="thorned-fae"]{--outer:#2a195b;--stage:#2d1036;--panel:#6b0733;--surface:#86385b;--accent:#e77d4e;--ink:#f0804b;--muted:#59304f;--side:#6b0733;--line:#f0804b;--soft-ink:#e77d4e}
+body[data-theme="cyber-blue"]{--outer:#4c6a8f;--stage:#17264a;--panel:#252a35;--surface:#4a90d9;--accent:#6b9fbd;--ink:#c3d2e5;--muted:#252a35;--side:#252a35;--line:#c3d2e5;--soft-ink:#9eb8d2}
+body[data-theme="midnight"]{--outer:#726a6d;--stage:#572c3c;--panel:#302d33;--surface:#888b8e;--accent:#96312e;--ink:#c0c2c8;--muted:#48434b;--side:#302d33;--line:#c0c2c8;--soft-ink:#b8bdc5}
+@media(max-width:760px){.theme-picker{margin:8px 0 14px}.theme-options{left:50%;right:auto;transform:translateX(-50%);top:calc(100% + 8px)}}
+</style>
+<script>
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const toastEl=$('#toast');let toastTimer;function toast(msg){toastEl.textContent=msg;toastEl.style.display='block';clearTimeout(toastTimer);toastTimer=setTimeout(()=>toastEl.style.display='none',2400)}
+const STORE='personal-dashboard-v1';
+function load(){try{return JSON.parse(localStorage.getItem(STORE))||{}}catch{return {}}}
+let db=load();db.friends??=[{id:crypto.randomUUID(),name:'friend one',status:'online',avatar:'assets/img_08.png'},{id:crypto.randomUUID(),name:'friend two',status:'busy',avatar:'assets/img_09.png'},{id:crypto.randomUUID(),name:'friend three',status:'away',avatar:'assets/img_10.png'}];db.saved??=[];db.photos??=['assets/img_03.png','assets/img_05.png','assets/img_07.png','assets/img_04.png','assets/img_06.png','assets/img_07.png'];db.photoPositions??=[];db.shortcuts??=[{label:'chat',target:'chat'},{label:'music',target:'music'},{label:'photos',target:'photos'}];db.profile??={thought:'what am i thinking?',avatar:'assets/img_14.png'};db.messages??=[];if(db.messages.length===2&&db.messages[0].text==='miss u!'&&db.messages[1].text==='going home')db.messages=[];db.chatSettings??={otherName:'mi lover',meName:'me',otherAvatar:'assets/img_15.png',meAvatar:'assets/img_14.png'};db.calendarEvents??=[];db.music??=null;
+function persist(){try{localStorage.setItem(STORE,JSON.stringify(db));return true}catch(e){toast('storage full: try a smaller image or remove saved items');return false}}
+// Theme chooser: previews are visible before selection, and the choice persists locally.
+(()=>{
+ const trigger=$('#theme-trigger'),menu=$('#theme-options');if(!trigger||!menu)return;
+ const themeNames=['dday','strawberry-matcha','thorned-fae','cyber-blue','midnight'];
+ function applyTheme(name){if(!themeNames.includes(name))return;document.body.dataset.theme=name;db.theme=name;persist();$$('.theme-option',menu).forEach(b=>b.classList.toggle('active',b.dataset.theme===name));}
+ trigger.addEventListener('click',()=>{const opening=menu.hidden;menu.hidden=!opening;trigger.setAttribute('aria-expanded',String(opening));});
+ $$('.theme-option',menu).forEach(b=>b.addEventListener('click',()=>{applyTheme(b.dataset.theme);menu.hidden=true;trigger.setAttribute('aria-expanded','false');toast(b.textContent.trim().toLowerCase()+' theme applied')}));
+ document.addEventListener('click',e=>{if(!e.target.closest('#theme-picker')){menu.hidden=true;trigger.setAttribute('aria-expanded','false')}});
+ applyTheme(themeNames.includes(db.theme)?db.theme:'dday');
+})();
+
+// Generic accessible modal builder. Fields are described as data, never injected as raw user HTML.
+let modalHandler=null;const modal=$('#modal'),modalForm=$('#modal-form'),fields=$('#modal-fields');
+function openModal(title,defs,onSave){$('#modal-title').textContent=title;fields.innerHTML='';modalHandler=onSave;for(const d of defs){const wrap=document.createElement('div');const id='field-'+d.name;const lab=document.createElement('label');lab.htmlFor=id;lab.textContent=d.label;wrap.append(lab);let el;if(d.type==='textarea'){el=document.createElement('textarea')}else if(d.type==='select'){el=document.createElement('select');for(const o of d.options){const op=document.createElement('option');op.value=o.value;op.textContent=o.label;el.append(op)}}else{el=document.createElement('input');el.type=d.type||'text';if(d.accept)el.accept=d.accept}el.id=id;el.name=d.name;if(d.placeholder)el.placeholder=d.placeholder;if(d.value!=null&&d.type!=='file')el.value=d.value;if(d.required)el.required= true;if(d.type==='file')el.required=!!d.required;wrap.append(el);if(d.help){const help=document.createElement('div');help.className='modal-help';help.textContent=d.help;wrap.append(help)}fields.append(wrap)}modal.classList.add('open');const first=$('input,textarea,select',fields);if(first)first.focus()}
+function closeModal(){modal.classList.remove('open');modalHandler=null}$('#cancel-modal').addEventListener('click',closeModal);modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});modalForm.addEventListener('submit',async e=>{e.preventDefault();if(!modalHandler)return;const data={};for(const el of $$('input,textarea,select',fields)){data[el.name]=el.type==='file'?el.files[0]||null:el.value.trim()}try{await modalHandler(data)}catch(err){console.error(err);toast('could not complete that action');return}closeModal()});
+function fileToData(file){return new Promise((resolve,reject)=>{const r=new FileReader();r.onerror=reject;r.onload=()=>{if(!file.type.startsWith('image/')){resolve(r.result);return}const im=new Image();im.onerror=()=>resolve(r.result);im.onload=()=>{const max=1400,scale=Math.min(1,max/Math.max(im.width,im.height));const c=document.createElement('canvas');c.width=Math.max(1,Math.round(im.width*scale));c.height=Math.max(1,Math.round(im.height*scale));c.getContext('2d').drawImage(im,0,0,c.width,c.height);try{resolve(c.toDataURL('image/jpeg',.82))}catch{resolve(r.result)}};im.src=r.result};r.readAsDataURL(file)})}
+function safeUrl(raw){try{const u=new URL(raw);return ['http:','https:'].includes(u.protocol)?u.href:null}catch{return null}}
+function iconFor(type){return ({link:'↗',image:'▧',file:'▤',note:'✎',music:'♫'})[type]||'•'}
+function openCalendar(){const today=new Date();const date=today.getFullYear()+'-'+String(today.getMonth()+1).padStart(2,'0')+'-'+String(today.getDate()).padStart(2,'0');openModal('calendar · '+today.toLocaleDateString(undefined,{weekday:'long',year:'numeric',month:'long',day:'numeric'}),[{name:'date',label:'Event date',type:'date',value:date},{name:'time',label:'Time',type:'text',value:'12:00 PM',placeholder:'e.g. 12:00 PM'},{name:'title',label:'Event / reminder',value:'',placeholder:'Add an event name'}],d=>{if(d.title){db.calendarEvents.push({date:d.date,time:d.time,title:d.title});persist();renderCalendar();toast('event added to calendar')}else{toast('calendar opened')}})}
+function renderCalendar(){const host=$('#date-widget');const now=new Date();$('#date-time').textContent=now.toLocaleTimeString(undefined,{hour:'numeric',minute:'2-digit'}).toLowerCase();$('#date-day').textContent=now.toLocaleDateString('en-US',{weekday:'long'}).toLowerCase();$('#date-full').textContent=now.toLocaleDateString('en-US',{month:'2-digit',day:'2-digit',year:'numeric'});const today=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0')+'-'+String(now.getDate()).padStart(2,'0');const events=db.calendarEvents.filter(e=>e.date===today);const pill=$('.home .pill');pill.textContent=events.length?events[0].title+' at '+events[0].time:'no events today';pill.title='Click calendar to add an event'}
+let musicQueue=[],musicIndex=-1;function loadQueueTrack(index,autoplay=true){if(!musicQueue.length)return;musicIndex=(index+musicQueue.length)%musicQueue.length;const item=musicQueue[musicIndex],audio=$('#audio-player');audio.src=item.url;audio.hidden=true;$('#music-track').innerHTML='';const marquee=document.createElement('span');marquee.textContent=item.name;$('#music-track').append(marquee);$('#play-btn').textContent='▶';renderQueue();if(autoplay)audio.play().catch(()=>{});applyMusicColor()}function renderQueue(){const host=$('#music-queue');host.innerHTML='';musicQueue.forEach((item,i)=>{const row=document.createElement('div');row.className='queue-item'+(i===musicIndex?' active':'');const num=document.createElement('b');num.textContent=(i+1)+'.';const name=document.createElement('span');name.textContent=item.name;row.append(num,name);row.addEventListener('click',()=>loadQueueTrack(i));host.append(row)});if(!host.children.length)host.hidden=true}function applyMusicColor(){const art=$('#music-art');try{const c=document.createElement('canvas');c.width=c.height=1;const ctx=c.getContext('2d',{willReadFrequently:true});ctx.drawImage(art,0,0,1,1);const d=ctx.getImageData(0,0,1,1).data;let r=d[0],g=d[1],b=d[2];if((r+g+b)/3<45){r=90;g=105;b=115}if((r+g+b)/3>225){r=190;g=205;b=215}document.querySelector('.music-panel').style.background=`rgb(${r},${g},${b})`;document.querySelector('.music-panel').style.setProperty('--music-ink',(r+g+b)>390?'#222':'#fff')}catch{}}$('#music-file').multiple=true;$('#music-file').addEventListener('change',e=>{const files=[...(e.target.files||[])];const audioFiles=files.filter(f=>f.type.startsWith('audio/'));if(!audioFiles.length){toast('choose one or more audio files');return}audioFiles.forEach(file=>musicQueue.push({name:file.name,url:URL.createObjectURL(file)}));if(musicIndex<0)loadQueueTrack(0);else renderQueue();toast(audioFiles.length+' music file(s) added to queue');e.target.value=''});$('#audio-player').addEventListener('ended',()=>{if(musicQueue.length>1)loadQueueTrack(musicIndex+1)});$('#audio-player').addEventListener('timeupdate',()=>{const a=$('#audio-player');if(a.duration)$('#music-seek').value=(a.currentTime/a.duration)*100});$('#music-seek').addEventListener('input',e=>{const a=$('#audio-player');if(a.duration)a.currentTime=(+e.target.value/100)*a.duration});$('#music-volume').addEventListener('input',e=>$('#audio-player').volume=+e.target.value);$('#cover-file').addEventListener('change',async e=>{const file=e.target.files?.[0];if(!file)return;if(!file.type.startsWith('image/')){toast('choose an image for the cover');return}$('#music-art').src=await fileToData(file);$('#music-art').onload=applyMusicColor;applyMusicColor();toast('cover updated')});$('#music-art').addEventListener('load',applyMusicColor);$('#music-art').style.objectPosition=db.musicCoverPosition||'center center';$('#music-art').title='Click to adjust cover framing';$('#music-art').addEventListener('click',()=>openModal('album cover · framing',[{name:'position',label:'Choose crop position',type:'select',value:db.musicCoverPosition||'center center',options:[{value:'center center',label:'Center'},{value:'center top',label:'Top'},{value:'center bottom',label:'Bottom'},{value:'left center',label:'Left'},{value:'right center',label:'Right'},{value:'left top',label:'Top left'},{value:'right top',label:'Top right'},{value:'left bottom',label:'Bottom left'},{value:'right bottom',label:'Bottom right'}]}],d=>{db.musicCoverPosition=d.position;$('#music-art').style.objectPosition=d.position;persist();toast('cover framing updated')}));
+function renderFriends(){const host=$('#friends-list');host.innerHTML='';db.friends.forEach(f=>{const card=document.createElement('div');card.className='friend-card';const b=document.createElement('button');b.className='friend';b.title='Open '+f.name;b.setAttribute('aria-label','Edit '+f.name);if(f.avatar){const im=document.createElement('img');im.src=f.avatar;im.alt='';b.append(im)}else{b.textContent=(f.name||'?').slice(0,1).toUpperCase()}const dot=document.createElement('span');dot.className='status '+(f.status==='busy'?'busy':f.status==='away'?'away':'');b.append(dot);b.addEventListener('click',()=>editFriend(f.id));card.append(b);const nm=document.createElement('span');nm.className='friend-name';nm.textContent=f.name;card.append(nm);host.append(card)})}
+function editFriend(id){const f=db.friends.find(x=>x.id===id);if(!f)return;openModal('edit friend',[{name:'name',label:'Name or nickname',value:f.name,required:true},{name:'status',label:'Status',type:'select',value:f.status,options:[{value:'online',label:'online'},{value:'busy',label:'busy'},{value:'away',label:'away'},{value:'offline',label:'offline'}]},{name:'avatar',label:'Profile photo (optional)',type:'file',accept:'image/*',help:'Choose a photo to replace the current one.'}],async d=>{f.name=d.name;f.status=d.status;if(d.avatar){if(d.avatar.size>4194304){toast('choose an image smaller than 16 MB');return}f.avatar=await fileToData(d.avatar)}db.friends=db.friends.filter(x=>x.id!==id||f.name);persist();renderFriends();toast('friend updated')})}
+function addFriend(){if(db.friends.length>=12){toast('maximum of 12 friends in this compact widget');return}openModal('add friend',[{name:'name',label:'Name or nickname',required:true},{name:'status',label:'Status',type:'select',value:'online',options:[{value:'online',label:'online'},{value:'busy',label:'busy'},{value:'away',label:'away'},{value:'offline',label:'offline'}]},{name:'avatar',label:'Profile photo (optional)',type:'file',accept:'image/*'}],async d=>{let avatar='';if(d.avatar){if(d.avatar.size>4194304){toast('choose an image smaller than 16 MB');return}avatar=await fileToData(d.avatar)}db.friends.push({id:crypto.randomUUID(),name:d.name,status:d.status,avatar});persist();renderFriends();toast('friend added')})}
+function renderSaved(){const host=$('#saved-icons');host.innerHTML='';if(!db.saved.length){const empty=document.createElement('span');empty.className='saved-empty';empty.textContent='＋ add items';host.append(empty);return}db.saved.forEach(item=>{const b=document.createElement('button');b.className='saved-item';b.title=item.title;b.innerHTML='';const icon=document.createElement('strong');icon.textContent=item.type==='image'&&item.data?'▧':iconFor(item.type);const label=document.createElement('span');label.textContent=item.title;b.append(icon,label);b.addEventListener('click',()=>openSaved(item.id));host.append(b)})}
+function openSaved(id){const it=db.saved.find(x=>x.id===id);if(!it)return;if(it.type==='link'){const url=safeUrl(it.url);if(url)window.open(url,'_blank','noopener,noreferrer');else toast('this link is invalid')}else if(it.type==='image'&&it.data){const w=window.open();if(w){const img=w.document.createElement('img');img.src=it.data;img.style='max-width:100%;height:auto';w.document.body.append(img)}}else if(it.type==='note'){openModal('saved note',[{name:'title',label:'Title',value:it.title,required:true},{name:'content',label:'Text',type:'textarea',value:it.content||''}],d=>{it.title=d.title;it.content=d.content;persist();renderSaved();toast('note updated')})}else if(it.type==='music'){toast(it.url?'music reference saved':'music title saved; playback needs a local audio file or supported integration')}else if(it.type==='file'){toast(it.data?'file saved locally; browser download can be started from edit':'file reference saved, but the original file was not copied')}showSavedActions(it)}
+function showSavedActions(it){openModal('saved item',[{name:'title',label:'Title',value:it.title,required:true},{name:'actions',label:'Choose action',type:'select',value:'keep',options:[{value:'keep',label:'Keep item'},{value:'edit',label:'Edit title/details'},{value:'delete',label:'Remove item'}]}],d=>{if(d.actions==='delete'){db.saved=db.saved.filter(x=>x.id!==it.id);persist();renderSaved();toast('item removed')}else if(d.actions==='edit'){editSaved(it.id)}else toast(it.title+' is saved locally')})}
+function editSaved(id){const it=db.saved.find(x=>x.id===id);if(!it)return;openModal('edit saved item',[{name:'title',label:'Title',value:it.title,required:true},{name:'url',label:'URL (if applicable)',value:it.url||''},{name:'content',label:'Text or notes',type:'textarea',value:it.content||''}],d=>{it.title=d.title;if(d.url){const u=safeUrl(d.url);if(!u){toast('enter a valid http(s) URL');return}it.url=u}it.content=d.content;persist();renderSaved();toast('saved item updated')})}
+function addSaved(){openModal('add to saved',[{name:'type',label:'Type',type:'select',value:'link',options:[{value:'link',label:'Link / website'},{value:'image',label:'Image'},{value:'file',label:'File from computer'},{value:'note',label:'Note / text'},{value:'music',label:'Music / album reference'}]},{name:'title',label:'Title',required:true,placeholder:'Give this item a name'},{name:'url',label:'URL (for links or references)',placeholder:'https://...'},{name:'content',label:'Text or description',type:'textarea'},{name:'file',label:'Choose file (for image or file)',type:'file',accept:'image/*,audio/*,.pdf,.txt,.doc,.docx,.zip'}],async d=>{const item={id:crypto.randomUUID(),type:d.type,title:d.title,created:Date.now(),url:'',content:d.content||''};if(d.url){const u=safeUrl(d.url);if(!u){toast('enter a valid http(s) URL');return}item.url=u}if(d.type==='link'&&!item.url){toast('a valid URL is required for links');return}if(d.type==='image'||d.type==='file'){if(!d.file){toast('choose a file for this item');return}if(d.file.size>16777216){toast('for this local version, choose a file smaller than 16 MB');return}item.fileName=d.file.name;item.mime=d.file.type;item.data=await fileToData(d.file);if(d.type==='image'&&!d.file.type.startsWith('image/')){toast('please choose an image file');return}}if(d.type==='music'&&!item.url&&!item.content){item.content='Music reference'}db.saved.push(item);if(persist()) {renderSaved();toast('item saved locally')}})}
+function renderPhotos(){const host=$('#camera-photos');host.innerHTML='';db.photos.slice(0,6).forEach((src,i)=>{const img=document.createElement('img');img.src=src;img.alt='picture '+(i+1);img.title='Click to manage this picture';img.style.objectPosition=db.photoPositions?.[i]||'center center';img.addEventListener('click',e=>{e.stopPropagation();managePhoto(i)});host.append(img)})}
+function managePhoto(i){openModal('picture '+(i+1)+' · frame', [{name:'action',label:'Action',type:'select',value:'frame',options:[{value:'frame',label:'Adjust framing'},{value:'replace',label:'Replace image'},{value:'up',label:'Move left / earlier'},{value:'down',label:'Move right / later'},{value:'remove',label:'Remove from camera'}]},{name:'position',label:'Choose crop position',type:'select',value:db.photoPositions?.[i]||'center center',options:[{value:'center center',label:'Center'},{value:'center top',label:'Top'},{value:'center bottom',label:'Bottom'},{value:'left center',label:'Left'},{value:'right center',label:'Right'},{value:'left top',label:'Top left'},{value:'right top',label:'Top right'},{value:'left bottom',label:'Bottom left'},{value:'right bottom',label:'Bottom right'}]},{name:'file',label:'New image (optional for framing)',type:'file',accept:'image/*'}],async d=>{if(d.action==='remove'){db.photos.splice(i,1);db.photoPositions.splice(i,1)}else if(d.action==='up'){if(i>0){[db.photos[i-1],db.photos[i]]=[db.photos[i],db.photos[i-1]];[db.photoPositions[i-1],db.photoPositions[i]]=[db.photoPositions[i],db.photoPositions[i-1]]}}else if(d.action==='down'){if(i<db.photos.length-1){[db.photos[i+1],db.photos[i]]=[db.photos[i],db.photos[i+1]];[db.photoPositions[i+1],db.photoPositions[i]]=[db.photoPositions[i],db.photoPositions[i+1]]}}else{if(d.file){if(!d.file.type.startsWith('image/')){toast('please choose an image file');return}if(d.file.size>16777216){toast('choose an image smaller than 16 MB');return}db.photos[i]=await fileToData(d.file)}db.photoPositions[i]=d.position||'center center'}if(persist()){renderPhotos();toast('camera picture updated')}}) }
+function addPhoto(){if(db.photos.length>=6){toast('the original composition has six picture slots; replace or remove one first');return}openModal('add picture',[{name:'file',label:'Choose an image',type:'file',accept:'image/*',required:true},{name:'position',label:'Position',type:'select',value:'end',options:[{value:'end',label:'At the end'},{value:'start',label:'At the beginning'}]}],async d=>{if(!d.file||!d.file.type.startsWith('image/')){toast('choose an image file');return}if(d.file.size>16777216){toast('choose an image smaller than 16 MB');return}const data=await fileToData(d.file);d.position==='start'?db.photos.unshift(data):db.photos.push(data);if(persist()){renderPhotos();toast('picture added')}})}
+function editProfile(){openModal('edit profile',[{name:'thought',label:'Thought / status',type:'textarea',value:db.profile.thought},{name:'avatar',label:'Profile picture (optional)',type:'file',accept:'image/*'}],async d=>{db.profile.thought=d.thought||'what am i thinking?';if(d.avatar){if(!d.avatar.type.startsWith('image/')||d.avatar.size>4194304){toast('choose an image under 16 MB');return}db.profile.avatar=await fileToData(d.avatar)}persist();renderProfile();toast('profile updated')})}
+function renderProfile(){$('#thought').textContent=db.profile.thought;$('#profile-image').src=db.profile.avatar}
+function editShortcuts(){const lines=db.shortcuts.map((s,i)=>`${i+1}. ${s.label} → ${s.target}`).join('\n');openModal('edit shortcuts',[{name:'list',label:'One shortcut per line: label | destination',type:'textarea',value:db.shortcuts.map(s=>s.label+' | '+s.target).join('\n'),help:'Internal destinations: chat, music, photos, friends, saved. Other destinations must be http(s) URLs.'}],d=>{const items=d.list.split('\n').map(line=>line.split('|').map(x=>x.trim())).filter(a=>a.length>=2&&a[0]&&a[1]).slice(0,5).map(([label,target])=>({label,target}));if(!items.length){toast('add at least one shortcut');return}for(const item of items){if(!['chat','music','photos','friends','saved'].includes(item.target.toLowerCase())&&!safeUrl(item.target)){toast('invalid destination: '+item.target);return}}db.shortcuts=items;persist();renderShortcuts();toast('shortcuts updated')})}
+function renderShortcuts(){const host=$('#side-icons');host.innerHTML='';db.shortcuts.forEach(s=>{const b=document.createElement('button');b.title=s.label;b.setAttribute('aria-label',s.label);b.textContent=({chat:'●',music:'♫',photos:'▧',friends:'♡',saved:'＋'})[s.target.toLowerCase()]||'↗';b.addEventListener('click',()=>goShortcut(s.target));host.append(b)})}
+function goShortcut(target){const t=target.toLowerCase();const sections={chat:$('.chat-panel'),music:$('.music-panel'),photos:$('.camera-area'),friends:$('.friends-panel'),saved:$('.saved-panel')};if(sections[t]){sections[t].scrollIntoView({behavior:'smooth',block:'center'});toast('opened '+t)}else{const u=safeUrl(target);if(u)window.open(u,'_blank','noopener,noreferrer');else toast('invalid shortcut destination')}}
+// Global live search across available local records and visible content.
+const searchInput=$('#search-input'),results=$('#search-results');function allSearchItems(){const items=[];db.friends.forEach(x=>items.push({type:'friend',title:x.name,text:x.name+' '+x.status,action:()=>editFriend(x.id)}));db.saved.forEach(x=>items.push({type:x.type,title:x.title,text:[x.title,x.url,x.content,x.fileName].join(' '),action:()=>openSaved(x.id)}));db.messages.forEach((x,i)=>items.push({type:'chat',title:x.text,text:x.text,el:$('.chat-panel')}));['home','chat','music','YourPicture choices','friends','saved'].forEach(name=>{const el=$$('.nav-title,.bottom-title,.camera-title').find(n=>n.textContent.toLowerCase()===name.toLowerCase());if(el)items.push({type:'section',title:name,text:name,el})});return items}
+function runSearch(){const q=searchInput.value.trim().toLowerCase();results.innerHTML='';if(!q){results.classList.remove('open');return}const hits=allSearchItems().filter(x=>(x.title+' '+x.text+' '+x.type).toLowerCase().includes(q)).slice(0,25);if(!hits.length){const e=document.createElement('div');e.className='search-empty';e.textContent='no results found';results.append(e)}else hits.forEach(hit=>{const row=document.createElement('div');row.className='search-result';const icon=document.createElement('strong');icon.textContent=iconFor(hit.type==='friend'?'file':hit.type);const wrap=document.createElement('div');wrap.textContent=hit.title;const small=document.createElement('small');small.textContent=hit.type;wrap.append(small);row.append(icon,wrap);row.addEventListener('click',()=>{results.classList.remove('open');if(hit.action)hit.action();else if(hit.el){hit.el.scrollIntoView({behavior:'smooth',block:'center'});hit.el.style.outline='2px solid #9bbbd0';setTimeout(()=>hit.el.style.outline='',1600)}});results.append(row)});results.classList.add('open')}
+searchInput.addEventListener('input',runSearch);$('#search-form').addEventListener('submit',e=>{e.preventDefault();runSearch()});document.addEventListener('click',e=>{if(!$('.search').contains(e.target)&&!results.contains(e.target))results.classList.remove('open')});
+// Chat starts empty; each bubble is added manually and can represent either participant.
+function renderChat(){const win=$('.chat-window');$$('.chat-msg',win).forEach(el=>el.remove());db.messages.forEach((m,i)=>{const side=m.sender==='other'?'other':'me';const row=document.createElement('div');row.className='chat-msg '+side;const avatar=document.createElement('img');avatar.src=side==='other'?db.chatSettings.otherAvatar:db.chatSettings.meAvatar;avatar.alt=side==='other'?db.chatSettings.otherName:db.chatSettings.meName;const b=document.createElement('div');b.className='bubble '+(side==='other'?'theirs':'mine');b.title='Click to edit or remove this message';b.textContent=m.text;b.addEventListener('click',()=>openModal('edit message',[{name:'text',label:'Message',type:'textarea',value:m.text,required:true}],d=>{m.text=d.text;persist();renderChat()}));row.append(...(side==='other'?[avatar,b]:[b,avatar]));win.insertBefore(row,$('.chat-spacer',win))})}
+function editChat(){openModal('edit chat',[{name:'otherName',label:'Other person name',value:db.chatSettings.otherName,required:true},{name:'meName',label:'Your name',value:db.chatSettings.meName,required:true},{name:'otherAvatar',label:'Other person image (optional)',type:'file',accept:'image/*'},{name:'meAvatar',label:'Your image (optional)',type:'file',accept:'image/*'}],async d=>{db.chatSettings.otherName=d.otherName;db.chatSettings.meName=d.meName;for(const k of ['otherAvatar','meAvatar'])if(d[k]){if(!d[k].type.startsWith('image/')||d[k].size>4194304){toast('choose an image under 16 MB');return}db.chatSettings[k]=await fileToData(d[k])}persist();$('#chat-other-name').textContent=db.chatSettings.otherName;$('#chat-other-avatar').src=db.chatSettings.otherAvatar;renderChat();toast('chat updated')})}
+$('#chat-form').addEventListener('submit',e=>{e.preventDefault();const input=$('#chat-input');if(input.value.trim()){db.messages.push({text:input.value.trim(),sender:$('#chat-sender').value});persist();renderChat();input.value=''}});
+// Notes and drawing are blank by default, then saved locally only after the user edits them.
+const notesInput=$('#notes-text');notesInput.value=typeof db.notesText==='string'?db.notesText:'';notesInput.addEventListener('input',()=>{db.notesText=notesInput.value;persist()});
+const drawCanvas=$('#draw-canvas'),drawCtx=drawCanvas.getContext('2d');let drawing=false,drawMode='pen';
+function resizeDrawCanvas(){const rect=drawCanvas.getBoundingClientRect();if(!rect.width||!rect.height)return;let old=null;try{old=drawCanvas.toDataURL()}catch{}drawCanvas.width=Math.round(rect.width*devicePixelRatio);drawCanvas.height=Math.round(rect.height*devicePixelRatio);drawCtx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);drawCtx.lineCap='round';drawCtx.lineJoin='round';if(db.drawData){const im=new Image();im.onload=()=>drawCtx.drawImage(im,0,0,rect.width,rect.height);im.src=db.drawData}else if(old&&old!=='data:,'){const im=new Image();im.onload=()=>drawCtx.drawImage(im,0,0,rect.width,rect.height);im.src=old}}
+function saveDrawing(){try{db.drawData=drawCanvas.toDataURL('image/png');persist()}catch{toast('drawing could not be saved')}}
+function drawPoint(e){const r=drawCanvas.getBoundingClientRect();return {x:e.clientX-r.left,y:e.clientY-r.top}}
+drawCanvas.addEventListener('pointerdown',e=>{drawing=true;drawCanvas.setPointerCapture(e.pointerId);const p=drawPoint(e);drawCtx.beginPath();drawCtx.moveTo(p.x,p.y);drawCtx.strokeStyle=drawMode==='eraser'?'#ffffff':$('#draw-color').value;drawCtx.lineWidth=drawMode==='eraser'?18:3;drawCtx.lineTo(p.x+.1,p.y+.1);drawCtx.stroke()});drawCanvas.addEventListener('pointermove',e=>{if(!drawing)return;const p=drawPoint(e);drawCtx.lineTo(p.x,p.y);drawCtx.stroke()});['pointerup','pointercancel','lostpointercapture'].forEach(ev=>drawCanvas.addEventListener(ev,()=>{if(drawing){drawing=false;saveDrawing()}}));$$('[data-draw]').forEach(b=>b.addEventListener('click',()=>{drawMode=b.dataset.draw;if(drawMode==='clear'){drawCtx.clearRect(0,0,drawCanvas.width,drawCanvas.height);db.drawData='';persist();drawMode='pen'}else toast(drawMode+' selected')}));window.addEventListener('resize',resizeDrawCanvas);setTimeout(resizeDrawCanvas,100);
+// Hover menus expand and collapse. Click remains useful on touchscreens.
+$$('.nav-title').forEach(el=>{el.tabIndex=0;el.setAttribute('role','button');el.addEventListener('mouseenter',()=>el.classList.add('nav-active'));el.addEventListener('mouseleave',()=>el.classList.remove('nav-active'));el.addEventListener('click',()=>{const name=el.textContent.trim().toLowerCase();const target=name==='home'?$('.home'):name==='chat'?$('.chat-panel'):name==='music'?$('.music-panel'):null;if(target)target.scrollIntoView({behavior:'smooth',block:'center'})})});
+// Generic interactions.
+document.addEventListener('click',e=>{const el=e.target.closest('[data-action]');if(!el)return;const a=el.dataset.action;if(a==='add-friend')addFriend();else if(a==='edit-chat')editChat();else if(a==='open-calendar')openCalendar();else if(a==='add-music')$('#music-file').click();else if(a==='add-cover')$('#cover-file').click();else if(a==='open-queue'){/* queue toggle is handled by the music panel control */}else if(a==='add-saved')addSaved();else if(a==='edit-profile')editProfile();else if(a==='edit-shortcuts')editShortcuts();else if(a==='photos'||a==='open-photos')addPhoto();else if(a==='open-chat')goShortcut('chat');else if(a==='open-music')goShortcut('music');else if(a==='play'){const audio=$('#audio-player');if(audio.src){audio.paused?audio.play():audio.pause()}else toast('add an audio file first')}else if(a==='prev')loadQueueTrack(musicIndex-1);else if(a==='next')loadQueueTrack(musicIndex+1);else if(a==='like'||a==='dislike')toast('music preference noted for this preview')});
+// Folders use a right-click Rename action, preserving exactly three folders.
+$$('.folder-row').forEach(row=>{row.addEventListener('click',()=>{ $$('.folder-row').forEach(r=>r.classList.remove('active'));row.classList.add('active');toast(row.querySelector('.pill').textContent+' folder selected. Browser access to computer folders requires permission.')});row.addEventListener('contextmenu',e=>{e.preventDefault();const pill=$('.pill',row);openModal('rename folder',[{name:'name',label:'Folder name',value:pill.textContent,required:true}],d=>{pill.textContent=d.name.toUpperCase();row.dataset.folder=d.name.toUpperCase();toast('folder renamed')})})});
+// Render stored data and apply profile changes.
+renderFriends();renderSaved();renderPhotos();renderProfile();renderShortcuts();applyMusicColor();$('#audio-player').volume=0.8;$('#chat-other-name').textContent=db.chatSettings.otherName;$('#chat-other-avatar').src=db.chatSettings.otherAvatar;renderChat();renderCalendar();setInterval(renderCalendar,30000);
+</script>
+<script>
+// Crop editor: Instagram-like square preview with grid, zoom and drag positioning.
+let cropSave=null;
+function cropEditor(src,initial={},save){cropSave=save;let overlay=$('#crop-overlay');if(!overlay){overlay=document.createElement('div');overlay.id='crop-overlay';overlay.className='crop-overlay';overlay.innerHTML=`<div class="crop-box"><h3>adjust image</h3><div class="crop-preview"><img id="crop-preview-img"><div class="crop-grid"></div></div><div class="crop-controls"><label>scale <input id="crop-zoom" type="range" min="1" max="3" step="0.01" value="1"></label><label>horizontal <input id="crop-x" type="range" min="0" max="100" value="50"></label><label>vertical <input id="crop-y" type="range" min="0" max="100" value="50"></label></div><div class="crop-actions"><button type="button" id="crop-cancel">cancel</button><button type="button" id="crop-save">save crop</button></div></div>`;document.body.append(overlay)}
+ const img=$('#crop-preview-img',overlay),zoom=$('#crop-zoom',overlay),x=$('#crop-x',overlay),y=$('#crop-y',overlay);img.src=src;zoom.value=initial.zoom||1;x.value=initial.x??50;y.value=initial.y??50;
+ const update=()=>{img.style.transform=`scale(${zoom.value})`;img.style.objectPosition=`${x.value}% ${y.value}%`};[zoom,x,y].forEach(el=>el.oninput=update);update();let drag=null;const preview=$('.crop-preview',overlay);preview.onpointerdown=e=>{drag={x:e.clientX,y:e.clientY,px:+x.value,py:+y.value};preview.setPointerCapture(e.pointerId)};preview.onpointermove=e=>{if(!drag)return;const rect=preview.getBoundingClientRect();x.value=Math.max(0,Math.min(100,drag.px-(e.clientX-drag.x)/rect.width*100));y.value=Math.max(0,Math.min(100,drag.py-(e.clientY-drag.y)/rect.height*100));update()};preview.onpointerup=()=>drag=null;preview.onpointercancel=()=>drag=null;
+ overlay.classList.add('open');$('#crop-cancel',overlay).onclick=()=>overlay.classList.remove('open');$('#crop-save',overlay).onclick=()=>{const result={zoom:+zoom.value,x:+x.value,y:+y.value};overlay.classList.remove('open');if(cropSave)cropSave(result)};
+}
+function cropStyle(el,crop){if(!crop)return;el.style.objectPosition=`${crop.x??50}% ${crop.y??50}%`;el.style.transform=`scale(${crop.zoom||1})`;el.style.transformOrigin='center';}
+// Upgrade camera photo controls to use the interactive crop grid.
+const oldRenderPhotos=renderPhotos;
+renderPhotos=function(){const host=$('#camera-photos');host.innerHTML='';db.photos.slice(0,6).forEach((src,i)=>{const frame=document.createElement('div');frame.className='camera-photo-frame';frame.style.cssText='min-width:0;min-height:0;overflow:hidden;border-radius:9px;position:relative;background:#fff';const img=document.createElement('img');img.src=src;img.alt='picture '+(i+1);img.title='click to manage, crop, replace, or remove this picture';img.style.cssText='width:100%;height:100%;object-fit:cover;display:block';cropStyle(img,db.photoCrops?.[i]);img.addEventListener('click',e=>{e.stopPropagation();managePhoto(i)});frame.append(img);host.append(frame)})};
+// Camera slot manager: crop, replace, reorder, or remove without changing the six-slot grid.
+managePhoto=function(i){openModal('picture '+(i+1)+' · manage',[{name:'action',label:'Action',type:'select',value:'frame',options:[{value:'frame',label:'Adjust framing'},{value:'replace',label:'Replace image'},{value:'up',label:'Move left / earlier'},{value:'down',label:'Move right / later'},{value:'remove',label:'Remove from camera'}]},{name:'file',label:'New image (for replace)',type:'file',accept:'image/*'}],async d=>{if(d.action==='remove'){db.photos.splice(i,1);db.photoPositions?.splice(i,1);db.photoCrops?.splice(i,1);if(persist()){renderPhotos();toast('picture removed from camera')}return}if(d.action==='up'||d.action==='down'){const j=d.action==='up'?i-1:i+1;if(j<0||j>=db.photos.length)return;for(const arr of [db.photos,db.photoPositions,db.photoCrops])if(Array.isArray(arr))[arr[i],arr[j]]=[arr[j],arr[i]];if(persist()){renderPhotos();toast('picture order updated')}return}if(d.action==='replace'){if(!d.file||!d.file.type.startsWith('image/')){toast('choose an image file');return}if(d.file.size>16777216){toast('choose an image smaller than 16 MB');return}const data=await fileToData(d.file);db.photos[i]=data;db.photoCrops??=[];db.photoCrops[i]={};if(persist()){renderPhotos();cropEditor(data,{},crop=>{db.photoCrops[i]=crop;persist();renderPhotos()});toast('picture replaced')}return}cropEditor(db.photos[i],db.photoCrops?.[i]||{},crop=>{db.photoCrops??=[];db.photoCrops[i]=crop;persist();renderPhotos()})})};
+// Paste copied image files anywhere on the page to add them to the existing camera grid.
+document.addEventListener('paste',async e=>{const target=e.target;if(target&&((target.isContentEditable)||/^(INPUT|TEXTAREA)$/.test(target.tagName)))return;const items=[...(e.clipboardData?.items||[])];const images=items.filter(item=>item.type&&item.type.startsWith('image/'));if(!images.length)return;e.preventDefault();let added=0;for(const item of images){if(db.photos.length>=6)break;const file=item.getAsFile();if(!file)continue;if(file.size>16777216){toast('one pasted image was larger than 16 MB');continue}const data=await fileToData(file);db.photos.push(data);db.photoPositions??=[];db.photoCrops??=[];db.photoPositions.push('center center');db.photoCrops.push({});added++}if(added&&persist()){renderPhotos();toast(added+' image(s) pasted into the camera grid')}if(db.photos.length>=6&&images.length>added)toast('the camera grid has six slots; remove or replace a picture to add another')});
+
+// Gallery shortcut: all user-added pictures with where they appear.
+function openPhotoGallery(){const entries=[];(db.photos||[]).forEach((src,i)=>entries.push({src,label:`YourPicture · slot ${i+1}`}));if(db.profile?.avatar)entries.push({src:db.profile.avatar,label:'profile icon'});if(db.chatSettings?.otherAvatar)entries.push({src:db.chatSettings.otherAvatar,label:'chat · other person'});if(db.chatSettings?.meAvatar)entries.push({src:db.chatSettings.meAvatar,label:'chat · you'});(db.friends||[]).forEach(f=>{if(f.avatar)entries.push({src:f.avatar,label:`friends · ${f.name}`} )});if($('#music-art')?.src && !$('#music-art').hidden)entries.push({src:$('#music-art').src,label:'music · album cover'});$('#modal-title').textContent='your gallery';fields.innerHTML='';const grid=document.createElement('div');grid.className='gallery-grid';entries.forEach(item=>{const card=document.createElement('div');card.className='gallery-card';const img=document.createElement('img');img.src=item.src;const label=document.createElement('small');label.textContent=item.label;card.append(img,label);grid.append(card)});if(!entries.length)grid.textContent='no images added yet';fields.append(grid);modal.classList.add('open');$('#cancel-modal').onclick=closeModal;$('#modal-form').onsubmit=e=>{e.preventDefault();closeModal()};}
+// Meaningful SVG symbols for fixed shortcuts.
+const shortcutSvg={chat:'<svg viewBox="0 0 40 40"><path d="M7 8h26v19H18l-8 6v-6H7z"/><path d="M13 15h14M13 20h10"/></svg>',music:'<svg viewBox="0 0 40 40"><path d="M16 29V9l17-3v20"/><circle cx="11" cy="30" r="5"/><circle cx="28" cy="27" r="5"/></svg>',photos:'<svg viewBox="0 0 40 40"><rect x="5" y="7" width="30" height="26" rx="4"/><circle cx="15" cy="16" r="3"/><path d="m8 29 9-8 6 5 5-6 5 9"/></svg>',friends:'<svg viewBox="0 0 40 40"><circle cx="15" cy="14" r="6"/><circle cx="28" cy="16" r="5"/><path d="M4 33c1-7 5-10 11-10s10 3 11 10M24 25c6-2 11 1 12 7"/></svg>',saved:'<svg viewBox="0 0 40 40"><path d="M10 5h20v30l-10-7-10 7z"/></svg>'};
+renderShortcuts=function(){const host=$('#side-icons');host.innerHTML='';db.shortcuts.forEach(s=>{const key=s.target.toLowerCase();const b=document.createElement('button');b.title=s.label;b.setAttribute('aria-label',key==='photos'?'gallery':s.label);b.innerHTML=shortcutSvg[key]||'<svg viewBox="0 0 40 40"><path d="M8 20h24M20 8v24"/></svg>';b.addEventListener('click',()=>key==='photos'?openPhotoGallery():goShortcut(s.target));host.append(b)})};
+// Make the album cover a blank rounded white square until the user chooses one.
+const art=$('#music-art');art.hidden=true;$('#music-art-button').addEventListener('click',()=>$('#cover-file').click());
+$('#cover-file').addEventListener('change',async e=>{const file=e.target.files?.[0];if(!file)return;if(!file.type.startsWith('image/')){toast('choose an image');return}const data=await fileToData(file);cropEditor(data,db.musicCoverCrop||{},crop=>{db.musicCover=data;db.musicCoverCrop=crop;art.src=data;art.hidden=false;cropStyle(art,crop);persist();applyMusicColor();toast('album cover updated')});e.target.value=''});
+if(db.musicCover){art.src=db.musicCover;art.hidden=false;cropStyle(art,db.musicCoverCrop)}
+// Existing cover color extraction is triggered on load; keep tones away from pure black/white.
+art.addEventListener('load',applyMusicColor);
+// Pause symbol: II while paused; play triangle while playing.
+const audioEl=$('#audio-player'),playButton=$('#play-btn');function syncPlayGlyph(){playButton.textContent=audioEl.paused?'Ⅱ':'▶'}audioEl.addEventListener('play',syncPlayGlyph);audioEl.addEventListener('pause',syncPlayGlyph);audioEl.addEventListener('ended',syncPlayGlyph);playButton.textContent='Ⅱ';
+// Queue expands in normal document flow and toggles closed on every click.
+const queueButton=$('[data-action="open-queue"]'),queueEl=$('#music-queue');queueButton.addEventListener('click',()=>{queueEl.hidden=!queueEl.hidden;if(!queueEl.hidden)renderQueue()});
+// Keep music progress/volume controls rounded and synchronized to the palette.
+$('#music-seek').addEventListener('input',e=>{if(audioEl.duration)audioEl.currentTime=(+e.target.value/100)*audioEl.duration});audioEl.addEventListener('timeupdate',()=>{if(audioEl.duration)$('#music-seek').value=audioEl.currentTime/audioEl.duration*100});
+// Reposition and refresh the lower date area without changing its content.
+$('#date-widget').style.textAlign='right';
+// Profile picture uses the same grid crop editor; click the avatar to reposition/scale it.
+$('#profile-image').style.cursor='pointer';$('#profile-image').addEventListener('click',()=>{const src=db.profile?.avatar||$('#profile-image').src;cropEditor(src,db.profileCrop||{},crop=>{db.profileCrop=crop;persist();cropStyle($('#profile-image'),crop)})});cropStyle($('#profile-image'),db.profileCrop);
+renderPhotos();renderShortcuts();
+</script>
+
+<style>
+/* requested refinements: keep the transport controls centered and the queue icon at the right */
+.music-panel{position:relative}
+.controls{width:100%;min-height:42px;display:flex;align-items:center;justify-content:center;position:relative;gap:0;margin-top:5px}
+.transport-controls{display:flex;align-items:center;justify-content:center;gap:24px;margin:0 auto}
+.transport-controls .icon-btn{color:var(--music-control,#526c7a);font-size:23px;min-width:28px}
+.transport-controls .play{font-size:31px;min-width:38px}
+.queue-toggle{position:absolute;right:2px;top:50%;transform:translateY(-50%);font-size:22px;color:var(--music-control,#526c7a);padding:5px}
+.music-panel .seek,.music-panel .volume-row input{accent-color:var(--music-control,#526c7a)}
+.music-panel .seek{height:7px;border-radius:99px;overflow:hidden}
+.music-panel .seek::-webkit-slider-runnable-track,.music-panel .volume-row input::-webkit-slider-runnable-track{height:6px;border-radius:99px;background:color-mix(in srgb,var(--music-control,#526c7a) 32%,transparent)}
+.music-panel .seek::-webkit-slider-thumb,.music-panel .volume-row input::-webkit-slider-thumb{box-shadow:-100vw 0 0 100vw var(--music-control,#526c7a);border:2px solid var(--music-control,#526c7a)}
+.music-panel .seek::-moz-range-track,.music-panel .volume-row input::-moz-range-track{height:6px;border-radius:99px;background:color-mix(in srgb,var(--music-control,#526c7a) 32%,transparent)}
+.music-panel .seek::-moz-range-progress,.music-panel .volume-row input::-moz-range-progress{height:6px;border-radius:99px;background:var(--music-control,#526c7a)}
+.music-queue{position:static;width:100%;max-height:72px;flex:0 0 auto;overflow:auto;margin-top:3px;background:color-mix(in srgb,var(--music-control,#526c7a) 12%,white);border:1px solid color-mix(in srgb,var(--music-control,#526c7a) 28%,transparent);border-radius:12px;box-shadow:none;padding:4px;font-size:10px}
+.profile img{width:52px;height:52px;object-fit:cover}
+.profile-edit{position:absolute;right:0;top:0;z-index:4;width:21px;height:21px;border:0;border-radius:50%;background:#fff;color:#333;font-size:12px;line-height:1;cursor:pointer;box-shadow:0 1px 4px #0002}
+.profile{min-height:58px}
+#notes-text{line-height:23px;padding:1px 0 0;background:repeating-linear-gradient(to bottom,transparent 0,transparent 21px,#222 21px,#222 22px);background-attachment:local;}
+@media(max-width:1050px){.profile img{width:48px;height:48px}}
+</style>
+<script>
+// Keep the three playback controls centered; queue remains a separate right-side icon.
+const centerPlay=$('#play-btn');
+function refreshPlayIndicator(){if(centerPlay)centerPlay.textContent=$('#audio-player').paused?'Ⅱ':'▶'}
+$('#audio-player').addEventListener('play',refreshPlayIndicator);
+$('#audio-player').addEventListener('pause',refreshPlayIndicator);
+$('#audio-player').addEventListener('ended',refreshPlayIndicator);
+refreshPlayIndicator();
+// Derive a visible control color from the cover's dominant color, never matching the widget background.
+const priorMusicColor=applyMusicColor;
+applyMusicColor=function(){priorMusicColor();const panel=$('.music-panel');let rgb=[194,216,231];try{const art=$('#music-art');if(art&&!art.hidden&&art.complete&&art.naturalWidth){const c=document.createElement('canvas');c.width=c.height=8;const ctx=c.getContext('2d',{willReadFrequently:true});ctx.drawImage(art,0,0,8,8);const d=ctx.getImageData(0,0,8,8).data;let r=0,g=0,b=0,n=0;for(let i=0;i<d.length;i+=4){r+=d[i];g+=d[i+1];b+=d[i+2];n++}rgb=[r/n,g/n,b/n]}}catch{}const [r,g,b]=rgb;const lum=(.2126*r+.7152*g+.0722*b);let control;if(lum>155){control=`rgb(${Math.max(30,r*.28)|0},${Math.max(35,g*.34)|0},${Math.max(45,b*.42)|0})`}else{control=`rgb(${Math.min(245,Math.max(160,r+100))|0},${Math.min(245,Math.max(165,g+100))|0},${Math.min(250,Math.max(175,b+105))|0})`}panel.style.setProperty('--music-control',control);panel.style.setProperty('--music-ink',lum>145?'#242a30':'#f8f8f8')};
+// The pencil opens two explicit edit choices: profile photo or thought bubble.
+editProfile=function(){openModal('edit profile',[{name:'part',label:'What would you like to change?',type:'select',value:'photo',options:[{value:'photo',label:'Profile picture'},{value:'thought',label:'Thought bubble'}]}],d=>{if(d.part==='photo'){openModal('change profile picture',[{name:'avatar',label:'Choose a profile image',type:'file',accept:'image/*',required:true}],async f=>{if(!f.avatar||!f.avatar.type.startsWith('image/')){toast('choose an image');return}if(f.avatar.size>16777216){toast('choose an image smaller than 16 MB');return}db.profile.avatar=await fileToData(f.avatar);db.profileCrop={zoom:1,x:50,y:50};persist();renderProfile();cropStyle($('#profile-image'),db.profileCrop);toast('profile picture updated')})}else{openModal('edit thought bubble',[{name:'thought',label:'Thought / status',type:'textarea',value:db.profile.thought||''}],d2=>{db.profile.thought=d2.thought||'';persist();renderProfile();toast('thought bubble updated')})}})};
+// Keep profile avatar visually compact even when a crop is applied.
+$('#profile-image').style.width='52px';$('#profile-image').style.height='52px';
+</script>
+
+
+<style>
+/* latest refinement: custom supplied transport artwork, conditional title marquee, profile controls */
+#play-btn{font-size:0!important;width:38px!important;height:38px!important;min-width:38px!important;display:grid;place-items:center;padding:0!important;color:var(--music-control)!important}
+#play-btn .transport-art{display:block;width:100%;height:100%;background:var(--music-control);-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;-webkit-mask-size:contain;mask-size:contain;transition:background-color .2s}
+#play-btn .transport-art.paused{-webkit-mask-image:url('assets/transport-paused.png');mask-image:url('assets/transport-paused.png')}
+#play-btn .transport-art.playing{-webkit-mask-image:url('assets/transport-playing.png');mask-image:url('assets/transport-playing.png')}
+#music-track{display:flex;justify-content:center;align-items:center;overflow:hidden;white-space:nowrap;position:relative;max-width:100%;}
+#music-track .track-runner{display:inline-flex;align-items:center;justify-content:center;gap:28px;min-width:0;max-width:100%;white-space:nowrap;}
+#music-track .track-runner span{display:inline-block;flex:0 0 auto;}
+#music-track.is-overflowing{justify-content:flex-start}
+#music-track.is-overflowing .track-runner{justify-content:flex-start;max-width:none;animation:track-marquee-fit 13s linear infinite;}
+#music-track.is-overflowing .track-runner span{min-width:max-content}
+@keyframes track-marquee-fit{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+#music-track:not(.is-overflowing) .track-runner{animation:none;transform:none}
+#thought{cursor:pointer;user-select:none}
+#thought:hover{filter:brightness(.96)}
+.profile-edit{cursor:pointer}
+</style>
+<script>
+// Use the user's supplied symbols as the two playback states without changing the control's position.
+const transportButton=document.querySelector('#play-btn');
+function paintTransportState(){
+  if(!transportButton)return;
+  const isPlaying=!document.querySelector('#audio-player').paused;
+  transportButton.innerHTML=`<span class="transport-art ${isPlaying?'playing':'paused'}" aria-hidden="true"></span>`;
+  transportButton.setAttribute('aria-label',isPlaying?'pause':'play');
+}
+['play','pause','ended','loadedmetadata'].forEach(ev=>document.querySelector('#audio-player').addEventListener(ev,paintTransportState));
+paintTransportState();
+
+// Keep short titles still and centered; only scroll when the full name cannot fit.
+function fitTrackTitle(){
+  const host=document.querySelector('#music-track');
+  if(!host)return;
+  const current=host.querySelector('.track-runner span')?.textContent || host.textContent.trim();
+  host.classList.remove('is-overflowing');
+  host.innerHTML='';
+  const runner=document.createElement('div');runner.className='track-runner';
+  const first=document.createElement('span');first.textContent=current;runner.append(first);host.append(runner);
+  requestAnimationFrame(()=>{
+    if(first.scrollWidth>host.clientWidth-20){
+      const second=document.createElement('span');second.textContent=current;runner.append(second);host.classList.add('is-overflowing');
+    }
+  });
+}
+const previousQueueLoad=loadQueueTrack;
+loadQueueTrack=function(index,autoplay=true){previousQueueLoad(index,autoplay);fitTrackTitle();paintTransportState();};
+const trackObserver=new ResizeObserver(fitTrackTitle);trackObserver.observe(document.querySelector('#music-track'));
+window.addEventListener('resize',fitTrackTitle);fitTrackTitle();
+
+// Pencil edits only the profile picture. The thought bubble edits itself when clicked.
+editProfile=function(){
+  openModal('change profile picture',[{name:'avatar',label:'Choose a profile image',type:'file',accept:'image/*',required:true}],async d=>{
+    if(!d.avatar||!d.avatar.type.startsWith('image/')){toast('choose an image');return}
+    if(d.avatar.size>16777216){toast('choose an image smaller than 16 MB');return}
+    const data=await fileToData(d.avatar);
+    cropEditor(data,db.profileCrop||{},crop=>{db.profile.avatar=data;db.profileCrop=crop;persist();renderProfile();cropStyle(document.querySelector('#profile-image'),crop);toast('profile picture updated')});
+  });
+};
+document.querySelector('#thought').addEventListener('click',()=>{
+  openModal('edit thought bubble',[{name:'thought',label:'Thought / status',type:'textarea',value:db.profile.thought||''}],d=>{db.profile.thought=d.thought||'';persist();renderProfile();toast('thought bubble updated')});
+});
+// Keep the avatar image itself non-interactive so only the pencil opens its editor.
+document.querySelector('#profile-image').style.cursor='default';
+document.querySelector('#profile-image').onclick=null;
+document.querySelector('#profile-image').addEventListener('click',e=>{e.stopImmediatePropagation();},true);
+</script>
+
+
+<style>
+/* Final requested profile and playback behavior */
+.profile-avatar-frame{width:52px!important;height:52px!important;min-width:52px!important;min-height:52px!important;border-radius:50%;overflow:hidden;position:relative;flex:0 0 52px;background:#fff;}
+.profile-avatar-frame #profile-image{display:block!important;width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;object-fit:cover!important;border-radius:50%!important;transform-origin:center center!important;}
+.profile-edit{width:auto!important;height:auto!important;min-width:0!important;min-height:0!important;padding:0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;color:#333!important;font-size:15px!important;line-height:1!important;}
+/* The crop is clipped by the fixed circular frame; zoom changes proximity, never avatar size. */
+#play-btn{font-size:31px!important;width:38px!important;height:38px!important;min-width:38px!important;min-height:38px!important;display:grid!important;place-items:center!important;padding:0!important;background:transparent!important;color:var(--music-control,#526c7a)!important;}
+#play-btn .transport-art{display:none!important;}
+.transport-controls .skip{font-size:22px!important;min-width:28px!important;}
+</style>
+<script>
+// Restore the original text controls: II while paused, play triangle while playing.
+(function(){
+ const audio=document.querySelector('#audio-player');
+ const play=document.querySelector('#play-btn');
+ if(!audio||!play)return;
+ function restore(){play.textContent=audio.paused||audio.ended?'Ⅱ':'▶';play.setAttribute('aria-label',audio.paused?'play':'pause');play.title=audio.paused?'play':'pause';}
+ ['play','pause','ended','loadedmetadata'].forEach(type=>audio.addEventListener(type,restore));
+ play.addEventListener('click',()=>requestAnimationFrame(restore));
+ restore();
+})();
+// Keep the profile image inside a fixed circular viewport. Crop zoom only changes the visible proximity.
+(function(){
+ const avatar=document.querySelector('#profile-image');
+ const frame=document.querySelector('.profile-avatar-frame');
+ if(!avatar||!frame)return;
+ frame.style.width='52px';frame.style.height='52px';frame.style.overflow='hidden';frame.style.borderRadius='50%';
+ avatar.style.width='100%';avatar.style.height='100%';avatar.style.maxWidth='100%';avatar.style.maxHeight='100%';avatar.style.objectFit='cover';avatar.style.borderRadius='50%';
+ const crop=db.profileCrop||{zoom:1,x:50,y:50};
+ avatar.style.objectPosition=`${crop.x??50}% ${crop.y??50}%`;
+ avatar.style.transform=`scale(${crop.zoom||1})`;
+ avatar.style.transformOrigin='center center';
+})();
+</script>
+
+
+<style id="music-v9-final">
+/* v9: stable text transport glyphs; compact, non-overlapping timeline and volume */
+.music-panel .album,.music-panel .album-empty,.music-panel #music-art-button{width:clamp(112px,56%,180px)!important;max-width:180px!important;min-width:112px!important;aspect-ratio:1/1!important;height:auto!important;border-radius:15px!important;background:#fff!important;overflow:hidden!important;flex:0 0 auto!important;}
+.music-panel #music-art{width:100%!important;height:100%!important;object-fit:cover!important;border-radius:15px!important;}
+.music-panel .controls{min-height:40px!important;margin:5px 0 2px!important;display:flex!important;align-items:center!important;justify-content:center!important;position:relative!important;overflow:visible!important;}
+.music-panel .transport-controls{display:flex!important;align-items:center!important;justify-content:center!important;gap:22px!important;margin:0 auto!important;position:relative!important;}
+.music-panel .transport-controls button,.music-panel #play-btn{font-family:Arial,Helvetica,sans-serif!important;font-variant-emoji:text!important;font-style:normal!important;font-weight:600!important;line-height:1!important;text-align:center!important;text-decoration:none!important;background:transparent!important;border:0!important;box-shadow:none!important;color:var(--music-control,#40596b)!important;opacity:1!important;visibility:visible!important;display:grid!important;place-items:center!important;padding:0!important;cursor:pointer!important;}
+.music-panel .transport-controls .skip{width:25px!important;min-width:25px!important;height:28px!important;font-size:21px!important;}
+.music-panel #play-btn{width:38px!important;min-width:38px!important;height:38px!important;font-size:29px!important;font-weight:700!important;}
+.music-panel #play-btn .transport-art{display:none!important;}
+.music-panel .seek{display:block!important;width:70%!important;max-width:230px!important;min-width:0!important;height:6px!important;margin:5px auto 7px!important;border-radius:999px!important;overflow:hidden!important;accent-color:var(--music-control)!important;}
+.music-panel .volume-row{width:72%!important;max-width:220px!important;margin:0 auto!important;display:flex!important;align-items:center!important;gap:7px!important;font-size:10px!important;line-height:1.2!important;}
+.music-panel .volume-row input{width:auto!important;flex:1 1 auto!important;min-width:0!important;height:6px!important;border-radius:999px!important;accent-color:var(--music-control)!important;}
+.music-panel .seek::-webkit-slider-runnable-track,.music-panel .volume-row input::-webkit-slider-runnable-track{height:6px!important;border-radius:999px!important;background:color-mix(in srgb,var(--music-control) 28%,transparent)!important;}
+.music-panel .seek::-webkit-slider-thumb,.music-panel .volume-row input::-webkit-slider-thumb{appearance:none!important;width:8px!important;height:8px!important;border-radius:50%!important;background:var(--music-control)!important;box-shadow:-100vw 0 0 100vw var(--music-control)!important;border:0!important;}
+.music-panel .seek::-moz-range-track,.music-panel .volume-row input::-moz-range-track{height:6px!important;border-radius:999px!important;background:color-mix(in srgb,var(--music-control) 28%,transparent)!important;}
+.music-panel .seek::-moz-range-progress,.music-panel .volume-row input::-moz-range-progress{height:6px!important;border-radius:999px!important;background:var(--music-control)!important;}
+.music-panel .seek::-moz-range-thumb,.music-panel .volume-row input::-moz-range-thumb{width:8px!important;height:8px!important;border:0!important;border-radius:50%!important;background:var(--music-control)!important;}
+</style>
+<script id="music-v9-final-js">
+(()=>{
+ const panel=document.querySelector('.music-panel'), audio=document.querySelector('#audio-player'), play=document.querySelector('#play-btn'), art=document.querySelector('#music-art');
+ if(!panel||!audio||!play||!art)return;
+ const setGlyph=()=>{const glyph=(audio.paused||audio.ended)?'Ⅱ':'▶';if(play.textContent!==glyph)play.textContent=glyph;play.setAttribute('aria-label',glyph==='Ⅱ'?'play':'pause');};
+ // Earlier revisions attached competing artwork/text handlers. This observer immediately
+ // normalizes any late DOM replacement to the one stable, requested text glyph.
+ const observer=new MutationObserver(setGlyph);observer.observe(play,{childList:true,subtree:true,characterData:true});
+ ['play','playing','pause','ended','emptied','loadedmetadata'].forEach(ev=>audio.addEventListener(ev,()=>{setGlyph();requestAnimationFrame(setGlyph);setTimeout(setGlyph,30);}));
+ play.addEventListener('click',()=>{requestAnimationFrame(setGlyph);setTimeout(setGlyph,50);});
+ document.querySelectorAll('.transport-controls .skip').forEach((b,i)=>{b.textContent=i===0?'≪':'≫';b.style.fontVariantEmoji='text';});
+ setGlyph();
+ const clamp=(v,min,max)=>Math.max(min,Math.min(max,v));
+ function updatePalette(){
+   let rgb=[150,175,190];
+   try{if(art.complete&&art.naturalWidth){const c=document.createElement('canvas');c.width=c.height=16;const ctx=c.getContext('2d',{willReadFrequently:true});ctx.drawImage(art,0,0,16,16);const d=ctx.getImageData(0,0,16,16).data;let r=0,g=0,b=0,n=0;for(let i=0;i<d.length;i+=4){if(d[i+3]<30)continue;r+=d[i];g+=d[i+1];b+=d[i+2];n++;}if(n)rgb=[r/n,g/n,b/n];}}catch(e){}
+   let [r,g,b]=rgb;const max=Math.max(r,g,b),min=Math.min(r,g,b),lum=.2126*r+.7152*g+.0722*b;
+   // Keep the cover's hue, lift/darken it enough to work as a widget surface.
+   const bg=[clamp(r*.62+90,95,220),clamp(g*.62+90,95,220),clamp(b*.62+90,95,220)];
+   const fg=lum>145?[clamp(r*.34,25,95),clamp(g*.34,28,105),clamp(b*.34,32,115)]:[clamp(r+105,155,250),clamp(g+105,160,250),clamp(b+105,165,255)];
+   const css=x=>`rgb(${x.map(v=>Math.round(v)).join(',')})`;
+   panel.style.setProperty('--music-bg',css(bg));panel.style.setProperty('--music-control',css(fg));panel.style.setProperty('--music-text',(.2126*bg[0]+.7152*bg[1]+.0722*bg[2])>158?'#26313a':'#fff');
+ }
+ art.addEventListener('load',updatePalette);const cover=document.querySelector('#cover-file');if(cover)cover.addEventListener('change',()=>setTimeout(updatePalette,120));
+ updatePalette();setGlyph();
+})();
+</script>
+
+
+<script id="photo-actions-v12">
+// Rounded one-click action popovers for camera photos and album artwork.
+(function(){
+  let pendingPaste=null;
+  const imageFile=async file=>{
+    if(!file||!file.type||!file.type.startsWith('image/')){toast('please choose an image');return null;}
+    if(file.size>16777216){toast('choose an image smaller than 16 MB');return null;}
+    return await fileToData(file);
+  };
+  const chooseFile=()=>new Promise(resolve=>{
+    const input=document.createElement('input');input.type='file';input.accept='image/*';
+    input.onchange=()=>resolve(input.files&&input.files[0]||null);input.click();
+  });
+  const closeActionMenu=()=>document.querySelector('.photo-action-overlay')?.remove();
+  const pastePrompt=target=>{pendingPaste=target;closeActionMenu();toast('copy an image, then press Ctrl + V to paste it');};
+  const showActionMenu=(title,actions)=>{
+    closeActionMenu();
+    const overlay=document.createElement('div');overlay.className='photo-action-overlay';
+    const panel=document.createElement('div');panel.className='photo-action-popover';
+    const heading=document.createElement('div');heading.className='photo-action-heading';heading.textContent=title;
+    const list=document.createElement('div');list.className='photo-action-list';
+    actions.forEach(action=>{
+      const button=document.createElement('button');button.type='button';button.className='photo-action-option'+(action.danger?' danger':'');
+      const icon=document.createElement('span');icon.className='photo-action-icon';icon.textContent=action.icon||'';
+      const label=document.createElement('span');label.textContent=action.label;
+      button.append(icon,label);button.addEventListener('click',()=>{closeActionMenu();action.run();});list.append(button);
+    });
+    panel.append(heading,list);overlay.append(panel);document.body.append(overlay);
+    overlay.addEventListener('click',e=>{if(e.target===overlay)closeActionMenu();});
+    const esc=e=>{if(e.key==='Escape'){closeActionMenu();document.removeEventListener('keydown',esc);}};
+    document.addEventListener('keydown',esc);
+  };
+  const photoCrop=i=>cropEditor(db.photos[i],db.photoCrops?.[i]||{},crop=>{db.photoCrops??=[];db.photoCrops[i]=crop;persist();renderPhotos();});
+  const addFromFile=async()=>{
+    if(db.photos.length>=6){toast('the camera grid is full (6/6). remove or replace a photo first.');return;}
+    const file=await chooseFile();if(!file)return;const data=await imageFile(file);if(!data)return;
+    db.photos.push(data);db.photoPositions??=[];db.photoCrops??=[];db.photoPositions.push('center center');db.photoCrops.push({});if(persist()){renderPhotos();toast('photo added to the grid');}
+  };
+  managePhoto=function(i){
+    if(i<0||i>=db.photos.length)return;
+    const actions=[
+      {label:'Replace',icon:'↻',run:async()=>{const file=await chooseFile();if(!file)return;const data=await imageFile(file);if(!data)return;db.photos[i]=data;db.photoCrops??=[];db.photoCrops[i]={};if(persist()){renderPhotos();photoCrop(i);toast('photo replaced');}}},
+      {label:'Remove',icon:'×',danger:true,run:()=>{db.photos.splice(i,1);db.photoPositions?.splice(i,1);db.photoCrops?.splice(i,1);if(persist()){renderPhotos();toast('photo removed');}}},
+      {label:'Change grid',icon:'▧',run:()=>photoCrop(i)},
+      {label:'Add',icon:'＋',run:()=>{if(db.photos.length>=6){toast('the camera grid is full (6/6). remove or replace a photo first.');return;}addFromFile();}},
+      {label:'Copy / paste image',icon:'▣',run:()=>pastePrompt({type:'photo',index:i})}
+    ];
+    showActionMenu('photo '+(i+1),actions);
+  };
+  addPhoto=function(){
+    if(db.photos.length>=6){toast('the camera grid is full (6/6). remove or replace a photo first.');return;}
+    showActionMenu('add a photo',[
+      {label:'Choose image',icon:'＋',run:addFromFile},
+      {label:'Copy / paste image',icon:'▣',run:()=>pastePrompt({type:'newPhoto'})}
+    ]);
+  };
+  const coverMenu=()=>showActionMenu('album cover',[
+    {label:'Replace',icon:'↻',run:async()=>{const file=await chooseFile();if(!file)return;const data=await imageFile(file);if(!data)return;db.musicCover=data;db.musicCoverCrop={};$('#music-art').src=data;$('#music-art').hidden=false;persist();cropEditor(data,{},crop=>{db.musicCoverCrop=crop;cropStyle($('#music-art'),crop);persist();applyMusicColor();});}},
+    {label:'Change grid',icon:'▧',run:()=>{if(!db.musicCover){toast('add an album cover first');return;}cropEditor(db.musicCover,db.musicCoverCrop||{},crop=>{db.musicCoverCrop=crop;cropStyle($('#music-art'),crop);persist();applyMusicColor();});}},
+    {label:'Copy / paste image',icon:'▣',run:()=>pastePrompt({type:'cover'})}
+  ]);
+  const coverButton=$('#music-art-button');
+  coverButton.addEventListener('click',e=>{e.preventDefault();e.stopImmediatePropagation();coverMenu();},true);
+  $('#music-art').addEventListener('click',e=>{e.preventDefault();e.stopImmediatePropagation();coverMenu();},true);
+  document.addEventListener('paste',async e=>{
+    if(!pendingPaste)return;
+    const item=[...(e.clipboardData?.items||[])].find(x=>x.type&&x.type.startsWith('image/'));
+    if(!item){toast('clipboard has no image. copy an image and try again.');return;}
+    e.preventDefault();e.stopImmediatePropagation();const file=item.getAsFile();const data=await imageFile(file);if(!data)return;
+    const target=pendingPaste;pendingPaste=null;
+    if(target.type==='cover'){
+      db.musicCover=data;db.musicCoverCrop={};$('#music-art').src=data;$('#music-art').hidden=false;
+      cropEditor(data,{},crop=>{db.musicCoverCrop=crop;cropStyle($('#music-art'),crop);persist();applyMusicColor();toast('album cover pasted');});
+    }else if(target.type==='photo'){
+      db.photos[target.index]=data;db.photoCrops??=[];db.photoCrops[target.index]={};if(persist()){renderPhotos();photoCrop(target.index);toast('image pasted into photo slot');}
+    }else if(target.type==='newPhoto'){
+      if(db.photos.length>=6){toast('the camera grid is full (6/6). remove or replace a photo first.');return;}
+      db.photos.push(data);db.photoPositions??=[];db.photoCrops??=[];db.photoPositions.push('center center');db.photoCrops.push({});if(persist()){renderPhotos();toast('image pasted into the camera grid');}
+    }
+  },true);
+})();
+</script>
+
+<style>
+.saved-icons{background:transparent!important;border-radius:0!important;width:100%!important;height:52px;justify-content:space-around!important;gap:7px!important;padding:2px 4px!important;overflow:visible!important}
+.saved-platform{width:34px;height:38px;flex:0 1 34px;display:flex;align-items:center;justify-content:center;border:0;background:transparent!important;color:#777;opacity:.82;cursor:pointer;padding:3px;transition:opacity .15s,transform .15s}
+.saved-platform:hover{opacity:1;transform:translateY(-2px)}
+.saved-platform svg{width:27px;height:27px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.saved-platform .brand-fill{fill:currentColor;stroke:none}
+.saved-platform span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+.saved-custom-link{flex:0 0 auto;border:0;background:transparent;color:#777;font:700 10px Nunito;cursor:pointer;max-width:64px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.saved-empty{display:none!important}
+</style>
+<script>
+(function(){
+ const platforms=[
+  {id:'pinterest',label:'pinterest',svg:'<svg viewBox="0 0 32 32"><path class="brand-fill" d="M16 3.5a12.5 12.5 0 0 0-4.55 24.14c-.02-.98-.01-2.16.24-3.22l1.72-7.28s-.43-.86-.43-2.13c0-2 1.16-3.5 2.6-3.5 1.23 0 1.82.92 1.82 2.03 0 1.24-.79 3.1-1.2 4.82-.34 1.44.72 2.61 2.14 2.61 2.57 0 4.3-3.3 4.3-7.2 0-2.97-2-5.2-5.64-5.2-4.11 0-6.67 3.07-6.67 6.5 0 1.18.35 2.02.9 2.67.25.3.28.42.19.77l-.27 1.1c-.09.35-.37.47-.68.34-1.9-.77-2.78-2.83-2.78-5.15 0-3.83 3.23-8.43 9.63-8.43 5.14 0 8.52 3.72 8.52 7.72 0 5.29-2.94 9.24-7.28 9.24-1.46 0-2.84-.79-3.31-1.69l-.95 3.78c-.29 1.1-.86 2.2-1.38 3.06A12.5 12.5 0 1 0 16 3.5Z"/></svg>'},
+  {id:'x',label:'x',svg:'<svg viewBox="0 0 32 32"><path d="M6 5h5.7L26 27h-5.7L6 5Z"/><path d="m25.5 5-8 9.2M14.5 17.8 6 27"/></svg>'},
+  {id:'instagram',label:'instagram',svg:'<svg viewBox="0 0 32 32"><rect x="4.5" y="4.5" width="23" height="23" rx="7"/><circle cx="16" cy="16" r="5.2"/><circle cx="23.2" cy="8.9" r="1" class="brand-fill"/></svg>'},
+  {id:'tumblr',label:'tumblr',svg:'<svg viewBox="0 0 32 32"><path d="M18.8 4.5v5.1h5v5h-5v6.7c0 2.1.9 2.8 2.5 2.8.9 0 1.8-.2 2.6-.6v4.2c-1.3.7-2.9 1-4.7 1-4.7 0-7-2.4-7-6.8v-7.3H9v-4.7c3.5-.9 5.1-2.7 5.7-5.4h4.1Z"/></svg>'}
+ ];
+ db.saved=(db.saved||[]).filter(x=>x&&x.type==='link');db.socialLinks??={};platforms.forEach(p=>{db.socialLinks[p.id]??=''});
+ function editPlatform(p){openModal(p.label,[{name:'url',label:'profile link',value:db.socialLinks[p.id]||'',placeholder:'https://...'}],d=>{const raw=d.url.trim();if(raw){const u=safeUrl(raw);if(!u){toast('enter a valid http(s) link');return}db.socialLinks[p.id]=u}else db.socialLinks[p.id]='';persist();renderSaved();toast(p.label+' link updated')})}
+ window.renderSaved=function(){const host=$('#saved-icons');if(!host)return;host.innerHTML='';platforms.forEach(p=>{const b=document.createElement('button');b.type='button';b.className='saved-platform';b.title=p.label+(db.socialLinks[p.id]?' · open':' · add link');b.setAttribute('aria-label',p.label);b.innerHTML=p.svg+'<span>'+p.label+'</span>';b.addEventListener('click',()=>{const u=safeUrl(db.socialLinks[p.id]||'');if(u)window.open(u,'_blank','noopener,noreferrer');else editPlatform(p)});host.append(b)});db.saved.forEach(item=>{const b=document.createElement('button');b.type='button';b.className='saved-custom-link';b.title=item.title;b.textContent=item.title;b.addEventListener('click',()=>openSaved(item.id));b.addEventListener('contextmenu',e=>{e.preventDefault();editSaved(item.id)});host.append(b)})};
+ window.addSaved=function(){openModal('add link',[{name:'title',label:'title',required:true,placeholder:'website name'},{name:'url',label:'link',required:true,placeholder:'https://...'}],d=>{const u=safeUrl(d.url);if(!u){toast('enter a valid http(s) link');return}db.saved.push({id:crypto.randomUUID(),type:'link',title:d.title,url:u,created:Date.now()});if(persist()){renderSaved();toast('link saved')}})};
+ window.openSaved=function(id){const it=db.saved.find(x=>x.id===id&&x.type==='link');if(!it)return;const u=safeUrl(it.url);if(u)window.open(u,'_blank','noopener,noreferrer');else toast('this link is invalid')};
+ persist();renderSaved();
+})();
+</script>
+
+
+<style>
+/* saved: compact white icon tiles and simple slot manager */
+.saved-panel .saved-icons{height:48px!important;width:calc(100% - 18px)!important;margin:7px auto 0!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:9px!important;padding:3px 5px!important;overflow:visible!important;background:transparent!important}
+.saved-panel .saved-platform{width:38px!important;height:38px!important;flex:0 0 38px!important;border-radius:12px!important;background:#fff!important;color:#666!important;box-shadow:0 1px 4px #0000000b!important;display:flex!important;align-items:center!important;justify-content:center!important;padding:5px!important;opacity:1!important;transition:transform .15s,box-shadow .15s!important}
+.saved-panel .saved-platform:hover{transform:translateY(-2px)!important;box-shadow:0 3px 9px #00000012!important}
+.saved-panel .saved-platform svg{width:23px!important;height:23px!important}
+.saved-panel .saved-platform span{display:none!important}
+.saved-panel .plus{z-index:2}
+.saved-manage-list{display:flex;flex-direction:column;gap:8px}
+.saved-manage-row{display:flex;align-items:center;gap:9px;background:#fff;border-radius:14px;padding:8px 10px}
+.saved-manage-row .saved-manage-icon{width:34px;height:34px;flex:0 0 34px;border-radius:10px;background:#f1f0ee;display:grid;place-items:center;color:#666}
+.saved-manage-row .saved-manage-icon svg{width:22px;height:22px}
+.saved-manage-row .saved-manage-name{flex:1;min-width:0;font:800 12px Nunito;color:#333;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.saved-manage-row button,.saved-manage-add{border:0;border-radius:11px;background:#eeedeb;padding:7px 10px;font:800 11px Nunito;cursor:pointer;color:#333}
+.saved-manage-add{width:100%;margin-top:9px;padding:10px}
+.saved-manage-note{font:600 10px Nunito;color:#777;margin:0 0 10px}
+</style>
+<script>
+(function(){
+ const $=(s,r=document)=>r.querySelector(s);
+ const iconMarkup={
+  pinterest:'<svg viewBox="0 0 32 32"><path fill="currentColor" stroke="none" d="M16 3.5a12.5 12.5 0 0 0-4.55 24.14c-.02-.98-.01-2.16.24-3.22l1.72-7.28s-.43-.86-.43-2.13c0-2 1.16-3.5 2.6-3.5 1.23 0 1.82.92 1.82 2.03 0 1.24-.79 3.1-1.2 4.82-.34 1.44.72 2.61 2.14 2.61 2.57 0 4.3-3.3 4.3-7.2 0-2.97-2-5.2-5.64-5.2-4.11 0-6.67 3.07-6.67 6.5 0 1.18.35 2.02.9 2.67.25.3.28.42.19.77l-.27 1.1c-.09.35-.37.47-.68.34-1.9-.77-2.78-2.83-2.78-5.15 0-3.83 3.23-8.43 9.63-8.43 5.14 0 8.52 3.72 8.52 7.72 0 5.29-2.94 9.24-7.28 9.24-1.46 0-2.84-.79-3.31-1.69l-.95 3.78c-.29 1.1-.86 2.2-1.38 3.06A12.5 12.5 0 1 0 16 3.5Z"/></svg>',
+  x:'<svg viewBox="0 0 32 32"><path fill="currentColor" stroke="none" d="M5 4h6.8l6.1 8.2L25 4h2.2l-8.3 9.5L28 28h-6.8l-6.7-9-8 9H4.3l9.2-10.5L5 4Zm5.8 2 12 20h2L12.8 6h-2Z"/></svg>',
+  instagram:'<svg viewBox="0 0 32 32"><rect x="4.5" y="4.5" width="23" height="23" rx="7"/><circle cx="16" cy="16" r="5.2"/><circle cx="23.2" cy="8.9" r="1" fill="currentColor" stroke="none"/></svg>',
+  tumblr:'<svg viewBox="0 0 32 32"><path fill="currentColor" stroke="none" d="M18.8 4.5v5.1h5v5h-5v6.7c0 2.1.9 2.8 2.5 2.8.9 0 1.8-.2 2.6-.6v4.2c-1.3.7-2.9 1-4.7 1-4.7 0-7-2.4-7-6.8v-7.3H9v-4.7c3.5-.9 5.1-2.7 5.7-5.4h4.1Z"/></svg>'
+ };
+ const labels={pinterest:'pinterest',x:'x',instagram:'instagram',tumblr:'tumblr'};
+ db.savedPlatformSlots??=['pinterest','x','instagram','tumblr'].map(id=>({id:crypto.randomUUID(),icon:id,label:labels[id],url:db.socialLinks?.[id]||''}));
+ db.savedPlatformSlots=db.savedPlatformSlots.slice(0,4);
+ function save(){persist();renderSaved()}
+ function render(){const host=$('#saved-icons');if(!host)return;host.innerHTML='';db.savedPlatformSlots.forEach(slot=>{const b=document.createElement('button');b.type='button';b.className='saved-platform';b.title=slot.label+(slot.url?' · open':' · add link');b.setAttribute('aria-label',slot.label);b.innerHTML=(iconMarkup[slot.icon]||iconMarkup.x)+'<span>'+slot.label+'</span>';b.addEventListener('click',()=>{const u=safeUrl(slot.url||'');if(u)window.open(u,'_blank','noopener,noreferrer');else edit(slot.id)});host.append(b)})}
+ window.renderSaved=render;
+ function edit(id){const slot=db.savedPlatformSlots.find(x=>x.id===id);if(!slot)return;$('#modal-form button[type="submit"]').style.display='';openModal('edit saved site',[{name:'label',label:'site name',value:slot.label,required:true},{name:'url',label:'site link',value:slot.url||'',placeholder:'https://...',required:true},{name:'icon',label:'icon',type:'select',value:slot.icon,options:Object.keys(labels).map(k=>({value:k,label:labels[k]}))}],d=>{const u=safeUrl(d.url);if(!u){toast('enter a valid http(s) link');return}slot.label=d.label;slot.url=u;slot.icon=d.icon;save();toast('saved site updated')})}
+ function add(){if(db.savedPlatformSlots.length>=4){toast('saved is limited to 4 sites. remove one before adding another.');return}const id=crypto.randomUUID();db.savedPlatformSlots.push({id,icon:'x',label:'new site',url:''});save();edit(id)}
+ function manage(){const modal=$('#modal'),fields=$('#modal-fields'),title=$('#modal-title'),submit=$('#modal-form button[type="submit"]');title.textContent='manage saved';fields.innerHTML='';const note=document.createElement('p');note.className='saved-manage-note';note.textContent='edit the site, change its icon or remove it. up to 4 sites.';fields.append(note);const list=document.createElement('div');list.className='saved-manage-list';db.savedPlatformSlots.forEach(slot=>{const row=document.createElement('div');row.className='saved-manage-row';const icon=document.createElement('div');icon.className='saved-manage-icon';icon.innerHTML=iconMarkup[slot.icon]||iconMarkup.x;const name=document.createElement('div');name.className='saved-manage-name';name.textContent=slot.label||'untitled site';const editBtn=document.createElement('button');editBtn.type='button';editBtn.textContent='edit';editBtn.onclick=()=>edit(slot.id);const removeBtn=document.createElement('button');removeBtn.type='button';removeBtn.textContent='remove';removeBtn.onclick=()=>{db.savedPlatformSlots=db.savedPlatformSlots.filter(x=>x.id!==slot.id);save();manage();toast('site removed')};row.append(icon,name,editBtn,removeBtn);list.append(row)});fields.append(list);const addBtn=document.createElement('button');addBtn.type='button';addBtn.className='saved-manage-add';addBtn.textContent=db.savedPlatformSlots.length>=4?'limit reached (4/4)':'＋ add site';addBtn.disabled=db.savedPlatformSlots.length>=4;addBtn.onclick=()=>add();fields.append(addBtn);submit.style.display='none';modal.classList.add('open');$('#cancel-modal').onclick=()=>{submit.style.display='';closeModal()};}
+ window.addSaved=manage;
+ // make sure the modal's regular submit button is restored after any modal closes
+ const cancel=$('#cancel-modal');const originalClose=window.closeModal;
+ const observer=new MutationObserver(()=>{if(!$('#modal').classList.contains('open')){$('#modal-form button[type="submit"]').style.display=''}});observer.observe($('#modal'),{attributes:true,attributeFilter:['class']});
+ render();
+})();
+</script>
+
+</body></html>
+
+<style>
+/* v6: exact user-supplied playback ornaments, preserving the existing centered 38px control */
+.music-panel .controls{position:relative;display:flex;align-items:center;justify-content:center;width:100%;}
+.music-panel .transport-controls{display:flex;align-items:center;justify-content:center;gap:24px;margin:0 auto;}
+.music-panel #play-btn{width:38px!important;height:38px!important;min-width:38px!important;min-height:38px!important;padding:0!important;display:grid!important;place-items:center!important;font-size:0!important;background:transparent!important;color:var(--music-control,#dce8ef)!important;}
+.music-panel #play-btn .transport-art{display:block;width:100%;height:100%;background-color:var(--music-control,#dce8ef);-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center center;mask-position:center center;-webkit-mask-size:contain;mask-size:contain;}
+.music-panel #play-btn .transport-art.paused{-webkit-mask-image:url('assets/transport-paused.png');mask-image:url('assets/transport-paused.png');}
+.music-panel #play-btn .transport-art.playing{-webkit-mask-image:url('assets/transport-playing.png');mask-image:url('assets/transport-playing.png');}
+.music-panel .queue-toggle{position:absolute;right:2px;top:50%;transform:translateY(-50%);}
+#music-track{width:100%;max-width:100%;min-width:0;display:flex;justify-content:center;align-items:center;overflow:hidden;white-space:nowrap;}
+#music-track .track-runner{display:inline-flex;justify-content:center;align-items:center;gap:30px;max-width:100%;min-width:0;white-space:nowrap;}
+#music-track .track-runner span{flex:0 0 auto;}
+#music-track.is-overflowing{justify-content:flex-start;}
+#music-track.is-overflowing .track-runner{max-width:none;justify-content:flex-start;animation:track-marquee-v6 14s linear infinite;}
+#music-track.is-overflowing .track-runner span{min-width:max-content;}
+@keyframes track-marquee-v6{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+#thought{cursor:pointer;user-select:none;}
+#thought:hover{filter:brightness(.96);}
+.profile-edit{z-index:6;}
+</style>
+<script>
+// v6 playback state: use the two supplied ornamental images, not text glyphs.
+(function(){
+  const audio=document.querySelector('#audio-player');
+  const button=document.querySelector('#play-btn');
+  if(!audio||!button)return;
+  function sync(){
+    const playing=!audio.paused && !audio.ended;
+    button.innerHTML='<span class="transport-art '+(playing?'playing':'paused')+'" aria-hidden="true"></span>';
+    button.setAttribute('aria-label',playing?'pause':'play');
+    button.title=playing?'pause':'play';
+  }
+  ['play','pause','ended','loadedmetadata'].forEach(event=>audio.addEventListener(event,sync));
+  button.addEventListener('click',()=>requestAnimationFrame(sync));
+  sync();
+})();
+
+// Measure the actual rendered title. Keep short names still and centered; marquee only on overflow.
+(function(){
+  const host=document.querySelector('#music-track');
+  if(!host)return;
+  window.fitMusicTrackTitleV6=function(){
+    const text=host.querySelector('.track-runner span')?.textContent || host.textContent.trim();
+    host.classList.remove('is-overflowing');
+    host.innerHTML='';
+    const runner=document.createElement('div');runner.className='track-runner';
+    const first=document.createElement('span');first.textContent=text;runner.append(first);host.append(runner);
+    requestAnimationFrame(()=>{
+      if(first.getBoundingClientRect().width>host.clientWidth-18){
+        const second=document.createElement('span');second.textContent=text;runner.append(second);host.classList.add('is-overflowing');
+      }
+    });
+  };
+  const oldLoad=window.loadQueueTrack;
+  if(typeof oldLoad==='function'&&!window.loadQueueTrack.__v6){
+    const wrapped=function(index,autoplay=true){oldLoad(index,autoplay);window.fitMusicTrackTitleV6();};
+    wrapped.__v6=true;window.loadQueueTrack=wrapped;
+  }
+  const observer=new ResizeObserver(window.fitMusicTrackTitleV6);observer.observe(host);
+  window.addEventListener('resize',window.fitMusicTrackTitleV6);
+  window.fitMusicTrackTitleV6();
+})();
+
+// The pencil edits only the avatar. The thought bubble is edited only by clicking the bubble itself.
+window.editProfile=function(){
+  openModal('change profile picture',[{name:'avatar',label:'Choose a profile image',type:'file',accept:'image/*',required:true}],async data=>{
+    if(!data.avatar||!data.avatar.type.startsWith('image/')){toast('choose an image');return;}
+    if(data.avatar.size>16777216){toast('choose an image smaller than 16 MB');return;}
+    const source=await fileToData(data.avatar);
+    cropEditor(source,db.profileCrop||{},crop=>{
+      db.profile.avatar=source;db.profileCrop=crop;persist();renderProfile();cropStyle(document.querySelector('#profile-image'),crop);toast('profile picture updated');
+    });
+  });
+};
+const thought=document.querySelector('#thought');
+if(thought&&!thought.dataset.v6Thought){
+  thought.dataset.v6Thought='1';
+  thought.addEventListener('click',event=>{event.stopImmediatePropagation();openModal('edit thought bubble',[{name:'thought',label:'Thought / status',type:'textarea',value:db.profile.thought||''}],data=>{
+    db.profile.thought=data.thought||'';persist();renderProfile();toast('thought bubble updated');
+  });},true);
+}
+// Keep the existing 38px avatar size; no click action on the avatar itself.
+const avatar=document.querySelector('#profile-image');
+if(avatar){avatar.style.width='52px';avatar.style.height='52px';avatar.style.cursor='default';}
+</script>
+
+<style id="music-final-fix">
+/* definitive music widget styling: keep the original transport layout and make every control visible */
+.music-panel{background:var(--music-bg,#8da9b8)!important;color:var(--music-text,#fff)!important;transition:background-color .25s,color .25s}
+.music-panel .listening,.music-panel .track,.music-panel .volume-row,.music-panel .music-actions{color:var(--music-text,#fff)!important}
+.music-panel .album,.music-panel .album-empty{width:clamp(76px,48%,170px)!important;aspect-ratio:1!important;height:auto!important;min-height:0!important;flex:0 0 auto!important;border-radius:14px!important;background:#fff!important;border:0!important;overflow:hidden!important;display:grid;place-items:center;cursor:pointer}
+.music-panel #music-art{width:100%!important;height:100%!important;object-fit:cover!important;border-radius:14px!important}
+.music-panel .controls{position:relative!important;width:100%!important;min-height:42px!important;display:flex!important;align-items:center!important;justify-content:center!important;margin-top:8px!important}
+.music-panel .transport-controls{display:flex!important;visibility:visible!important;opacity:1!important;align-items:center!important;justify-content:center!important;gap:24px!important;margin:0 auto!important;position:relative!important}
+.music-panel .transport-controls .icon-btn,.music-panel .transport-controls #play-btn{display:grid!important;visibility:visible!important;opacity:1!important;place-items:center!important;border:0!important;background:transparent!important;color:var(--music-control,#344b5b)!important;cursor:pointer!important;line-height:1!important}
+.music-panel .transport-controls .skip{width:30px!important;height:32px!important;min-width:30px!important;font-size:22px!important}
+.music-panel .transport-controls #play-btn{width:38px!important;height:38px!important;min-width:38px!important;font-family:Arial,sans-serif!important;font-size:30px!important;font-weight:800!important}
+.music-panel .queue-toggle{display:block!important;visibility:visible!important;opacity:1!important;color:var(--music-control,#344b5b)!important}
+.music-panel .seek,.music-panel .volume-row input{accent-color:var(--music-control,#344b5b)!important;border-radius:999px!important;cursor:pointer}
+.music-panel .seek{width:78%!important;height:9px!important;border-radius:999px!important;overflow:hidden!important;background:color-mix(in srgb,var(--music-control,#344b5b) 25%,transparent)!important}
+.music-panel .volume-row{width:86%!important;display:flex!important;align-items:center!important;gap:8px!important;font-size:10px!important}
+.music-panel .volume-row input{flex:1!important;min-width:0!important;height:8px!important;border-radius:999px!important}
+.music-panel .seek::-webkit-slider-runnable-track,.music-panel .volume-row input::-webkit-slider-runnable-track{height:7px!important;border-radius:999px!important;background:color-mix(in srgb,var(--music-control,#344b5b) 28%,transparent)!important}
+.music-panel .seek::-webkit-slider-thumb,.music-panel .volume-row input::-webkit-slider-thumb{appearance:none!important;width:9px!important;height:9px!important;border-radius:50%!important;background:var(--music-control,#344b5b)!important;box-shadow:-100vw 0 0 100vw var(--music-control,#344b5b)!important;border:0!important}
+.music-panel .seek::-moz-range-track,.music-panel .volume-row input::-moz-range-track{height:7px!important;border-radius:999px!important;background:color-mix(in srgb,var(--music-control,#344b5b) 28%,transparent)!important}
+.music-panel .seek::-moz-range-progress,.music-panel .volume-row input::-moz-range-progress{height:7px!important;border-radius:999px!important;background:var(--music-control,#344b5b)!important}
+.music-panel .music-queue{background:color-mix(in srgb,var(--music-control,#344b5b) 13%,white)!important;border:1px solid color-mix(in srgb,var(--music-control,#344b5b) 35%,transparent)!important;border-radius:13px!important;color:#26333c!important}
+</style>
+<script id="music-final-fix-js">
+(()=>{
+ const panel=document.querySelector('.music-panel'),art=document.querySelector('#music-art'),audio=document.querySelector('#audio-player'),play=document.querySelector('#play-btn');
+ if(!panel||!art||!audio||!play)return;
+ const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+ function palette(){
+   let rgb=[145,171,187];
+   try{if(!art.hidden&&art.complete&&art.naturalWidth){const c=document.createElement('canvas');c.width=c.height=12;const x=c.getContext('2d',{willReadFrequently:true});x.drawImage(art,0,0,12,12);const d=x.getImageData(0,0,12,12).data;let r=0,g=0,b=0,n=0;for(let i=0;i<d.length;i+=4){r+=d[i];g+=d[i+1];b+=d[i+2];n++}rgb=[r/n,g/n,b/n]}}catch(e){}
+   let [r,g,b]=rgb;const lum=.2126*r+.7152*g+.0722*b;
+   // soften the dominant color into a widget background while retaining its hue
+   let bg=[clamp(r*.58+105,105,218),clamp(g*.58+105,105,218),clamp(b*.58+105,105,218)];
+   // controls are a darker or lighter member of the same palette, never the widget color
+   let fg=lum>150?[clamp(r*.38,28,95),clamp(g*.38,32,105),clamp(b*.38,38,115)]:[clamp(r+105,155,248),clamp(g+105,160,248),clamp(b+105,165,250)];
+   const css=a=>`rgb(${Math.round(a[0])},${Math.round(a[1])},${Math.round(a[2])})`;
+   panel.style.setProperty('--music-bg',css(bg));panel.style.setProperty('--music-control',css(fg));panel.style.setProperty('--music-text',(.2126*bg[0]+.7152*bg[1]+.0722*bg[2])>158?'#26313a':'#fff');
+ }
+ function sync(){play.textContent=(audio.paused||audio.ended)?'Ⅱ':'▶';play.setAttribute('aria-label',(audio.paused||audio.ended)?'play':'pause');play.style.color='var(--music-control)'}
+ ['play','pause','ended','loadedmetadata'].forEach(ev=>audio.addEventListener(ev,()=>{sync();palette()}));
+ // Keep existing skip/queue handlers; make controls explicitly visible.
+ document.querySelectorAll('.transport-controls button,.queue-toggle').forEach(b=>{b.style.visibility='visible';b.style.opacity='1'});
+ play.addEventListener('click',()=>setTimeout(sync,0));
+ const vol=document.querySelector('#music-volume');if(vol){audio.volume=Number(vol.value||.8);vol.addEventListener('input',()=>audio.volume=Number(vol.value))}
+ const seek=document.querySelector('#music-seek');if(seek){audio.addEventListener('timeupdate',()=>{if(audio.duration)seek.value=audio.currentTime/audio.duration*100});seek.addEventListener('input',()=>{if(audio.duration)audio.currentTime=Number(seek.value)/100*audio.duration})}
+ art.addEventListener('load',palette);
+ const coverButton=document.querySelector('#music-art-button');if(coverButton)coverButton.style.background='#fff';
+ // Re-run after existing cover selection handlers have assigned the image.
+ const coverInput=document.querySelector('#cover-file');if(coverInput)coverInput.addEventListener('change',()=>setTimeout(palette,100));
+ const originalSrc=art.getAttribute('src');if(originalSrc&&!art.hidden&&art.complete)palette();else palette();
+ sync();
+})();
+</script>
+
+
+<style id="photo-actions-v12-style">
+.photo-action-overlay{position:fixed;inset:0;z-index:10020;background:rgba(25,24,24,.18);display:flex;align-items:center;justify-content:center;padding:18px;backdrop-filter:blur(2px)}
+.photo-action-popover{width:min(290px,calc(100vw - 36px));background:#f5f4f2;border:1px solid rgba(255,255,255,.85);border-radius:24px;padding:14px;box-shadow:0 16px 48px rgba(0,0,0,.16);animation:photoPopIn .16s ease-out}
+.photo-action-heading{font-size:13px;font-weight:900;color:#777;text-align:center;padding:3px 8px 11px;letter-spacing:.02em;text-transform:lowercase}
+.photo-action-list{display:flex;flex-direction:column;gap:6px}
+.photo-action-option{width:100%;min-height:42px;border:0;border-radius:15px;background:#fff;color:#242323;display:flex;align-items:center;gap:12px;padding:8px 13px;text-align:left;font:800 13px Nunito,Arial,sans-serif;cursor:pointer;transition:background .14s,transform .14s}
+.photo-action-option:hover{background:#e8e6e4;transform:translateY(-1px)}
+.photo-action-option:active{transform:scale(.985)}
+.photo-action-icon{width:22px;height:22px;display:grid;place-items:center;border-radius:8px;background:#eeedeb;color:#555;font-size:16px;flex:0 0 22px}
+.photo-action-option.danger{color:#a65f68}.photo-action-option.danger .photo-action-icon{background:#f3e5e6;color:#a65f68}
+@keyframes photoPopIn{from{opacity:0;transform:translateY(5px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+</style>
+
+
+<style id="v13-layout-palette-fix">
+/* keep the thought bubble clear of the search field */
+@media (min-width:761px){.search{justify-content:flex-start!important}.searchbox{width:calc(100% - 88px)!important;max-width:100%!important;margin-right:auto!important}}
+@media (max-width:760px){.searchbox{width:100%!important}}
+/* all interface labels and words use lowercase styling */
+body,.modal,.toast{ text-transform:lowercase; }
+/* the volume fill is drawn inside the rounded track, edge to edge */
+.music-panel .volume-row input[type="range"]{appearance:none!important;-webkit-appearance:none!important;height:7px!important;padding:0!important;border:0!important;border-radius:999px!important;overflow:hidden!important;background:linear-gradient(to right,var(--music-control) 0%,var(--music-control) var(--volume-fill,80%),color-mix(in srgb,var(--music-control) 25%,transparent) var(--volume-fill,80%),color-mix(in srgb,var(--music-control) 25%,transparent) 100%)!important;box-shadow:none!important}
+.music-panel .volume-row input[type="range"]::-webkit-slider-runnable-track{height:7px!important;background:transparent!important;border:0!important;border-radius:999px!important}
+.music-panel .volume-row input[type="range"]::-webkit-slider-thumb{appearance:none!important;-webkit-appearance:none!important;width:9px!important;height:9px!important;border-radius:50%!important;background:var(--music-control)!important;border:0!important;box-shadow:none!important}
+.music-panel .volume-row input[type="range"]::-moz-range-track{height:7px!important;background:transparent!important;border:0!important;border-radius:999px!important}
+.music-panel .volume-row input[type="range"]::-moz-range-progress{height:7px!important;background:transparent!important}
+.music-panel .volume-row input[type="range"]::-moz-range-thumb{width:9px!important;height:9px!important;border:0!important;border-radius:50%!important;background:var(--music-control)!important;box-shadow:none!important}
+</style>
+<script id="v13-palette-volume-fix">
+(()=>{
+ const panel=document.querySelector('.music-panel'),art=document.querySelector('#music-art'),vol=document.querySelector('#music-volume');
+ if(!panel||!art)return;
+ const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+ const css=a=>`rgb(${a.map(v=>Math.round(clamp(v,0,255))).join(',')})`;
+ function palette(){
+  let dominant=[145,171,187];
+  try{
+   if(!art.hidden&&art.complete&&art.naturalWidth){
+    const c=document.createElement('canvas');c.width=c.height=32;
+    const x=c.getContext('2d',{willReadFrequently:true});x.drawImage(art,0,0,32,32);
+    const d=x.getImageData(0,0,32,32).data,bins=new Map();
+    for(let i=0;i<d.length;i+=4){if(d[i+3]<100)continue;const key=[d[i]>>5,d[i+1]>>5,d[i+2]>>5].join(',');let q=bins.get(key);if(!q)bins.set(key,q={n:0,r:0,g:0,b:0});q.n++;q.r+=d[i];q.g+=d[i+1];q.b+=d[i+2]}
+    let best=null;for(const q of bins.values())if(!best||q.n>best.n)best=q;
+    if(best)dominant=[best.r/best.n,best.g/best.n,best.b/best.n];
+   }
+  }catch(e){}
+  const [r,g,b]=dominant,lum=.2126*r+.7152*g+.0722*b;
+  // mix the actual dominant hue with white for the widget surface
+  const bg=[r*.48+255*.52,g*.48+255*.52,b*.48+255*.52];
+  // transport controls use a darker/lighter shade of that same sampled hue
+  const fg=lum>155?[r*.48,g*.48,b*.48]:[r+(255-r)*.48,g+(255-g)*.48,b+(255-b)*.48];
+  panel.style.setProperty('--music-bg',css(bg));panel.style.setProperty('--music-control',css(fg));
+  panel.style.setProperty('--music-text',(.2126*bg[0]+.7152*bg[1]+.0722*bg[2])>164?'#26313a':'#fff');
+ }
+ function volumeFill(){if(!vol)return;const min=Number(vol.min||0),max=Number(vol.max||1),value=Number(vol.value||0);const pct=clamp((value-min)/(max-min||1)*100,0,100);vol.style.setProperty('--volume-fill',pct+'%');}
+ if(vol){vol.addEventListener('input',volumeFill);vol.addEventListener('change',volumeFill);volumeFill();}
+ art.addEventListener('load',palette);const coverInput=document.querySelector('#cover-file');if(coverInput)coverInput.addEventListener('change',()=>setTimeout(palette,120));
+ if(art.complete)palette();
+})();
+</script>
+
+
+<style id="v18-visibility-and-chat-fix">
+/* dday is the original, unmodified site palette */
+body[data-theme="dday"]{--outer:#f4f3f1;--stage:#f4f3f1;--panel:#d9d7d7;--surface:#fff;--accent:#e7e6e6;--ink:#171515;--muted:#e8e7e7;--side:#d8d6d6;--line:#171515;--soft-ink:#555;--shortcut-ink:#242222}
+.dday-preview i:nth-child(1){background:#f4f3f1}.dday-preview i:nth-child(2){background:#d9d7d7}.dday-preview i:nth-child(3){background:#fff}
+/* Improve contrast in darker palettes without changing their identity. */
+body[data-theme="thorned-fae"]{--surface:#48243f;--ink:#fff0e8;--accent:#e77d4e;--muted:#59304f;--soft-ink:#ffe0d2;--shortcut-ink:#fff0e8}
+body[data-theme="cyber-blue"]{--surface:#1e314c;--ink:#eaf4ff;--accent:#4a90d9;--muted:#252a35;--soft-ink:#c8def4;--shortcut-ink:#eaf4ff}
+body[data-theme="midnight"]{--surface:#40363e;--ink:#f3e9ec;--accent:#96312e;--muted:#48434b;--soft-ink:#e1d4d9;--shortcut-ink:#f3e9ec}
+/* rounded message composer, following the selected theme */
+#chat-form{border:0!important;border-radius:18px!important;background:var(--panel)!important;padding:5px 7px!important;gap:6px!important;overflow:hidden}
+#chat-form .chat-input{border:0!important;border-radius:13px!important;background:var(--surface)!important;color:var(--ink)!important;padding:9px 11px!important;min-height:36px}
+#chat-form .chat-input::placeholder{color:var(--soft-ink)!important;opacity:1}
+#chat-form .chat-sender{background:var(--accent)!important;color:var(--ink)!important;border-radius:12px!important;min-height:30px}
+#chat-form .send-message{background:var(--accent)!important;color:var(--ink)!important;border-radius:12px!important;width:32px!important;height:32px!important;flex:0 0 32px}
+/* readable text and controls across all themes */
+.theme-option,.theme-options-title,.theme-trigger,.edit-shortcuts,.modal-box,.modal-box input,.modal-actions button{color:var(--ink)!important}
+.searchbox input,.paper textarea,.chat-input{color:var(--ink)!important}
+.side-icons button,.side-icons svg{color:var(--shortcut-ink,var(--ink))!important;stroke:currentColor}
+</style>
+<script id="v18-music-palette-final">
+(()=>{
+ const panel=document.querySelector('.music-panel'),art=document.querySelector('#music-art'),audio=document.querySelector('#audio-player'),vol=document.querySelector('#music-volume'),seek=document.querySelector('#music-seek');
+ if(!panel||!art)return;
+ const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+ const css=a=>`rgb(${a.map(v=>Math.round(clamp(v,0,255))).join(',')})`;
+ function getDominant(){
+  try{
+   if(!art.hidden&&art.complete&&art.naturalWidth){
+    const c=document.createElement('canvas');c.width=c.height=40;const ctx=c.getContext('2d',{willReadFrequently:true});ctx.drawImage(art,0,0,40,40);
+    const data=ctx.getImageData(0,0,40,40).data,bins=new Map();
+    for(let i=0;i<data.length;i+=4){if(data[i+3]<100)continue;const r=data[i],g=data[i+1],b=data[i+2];const key=[r>>5,g>>5,b>>5].join(':');let v=bins.get(key);if(!v)bins.set(key,v={n:0,r:0,g:0,b:0});v.n++;v.r+=r;v.g+=g;v.b+=b;}
+    let best=null;for(const v of bins.values())if(!best||v.n>best.n)best=v;
+    if(best)return [best.r/best.n,best.g/best.n,best.b/best.n];
+   }
+  }catch(e){}
+  return null;
+ }
+ function updatePalette(){
+  const dominant=getDominant();
+  if(!dominant){
+   // Before a cover is selected, match the music widget to the active theme's other widgets.
+   panel.style.setProperty('--music-bg','var(--panel)');
+   panel.style.setProperty('--music-control','var(--ink)');
+   panel.style.setProperty('--music-text','var(--ink)');
+   panel.style.setProperty('--music-track','var(--accent)');
+   return;
+  }
+  const [r,g,b]=dominant,lum=.2126*r+.7152*g+.0722*b;
+  // Keep the real dominant hue; only soften it enough for a usable widget surface.
+  const bg=lum>165?[r*.34+255*.66,g*.34+255*.66,b*.34+255*.66]:[r*.58+255*.42,g*.58+255*.42,b*.58+255*.42];
+  // Transport controls use a distinct darker/lighter shade derived from the cover.
+  const fg=lum>150?[r*.42,g*.42,b*.42]:[r+(255-r)*.58,g+(255-g)*.58,b+(255-b)*.58];
+  panel.style.setProperty('--music-bg',css(bg));panel.style.setProperty('--music-control',css(fg));
+  panel.style.setProperty('--music-text',(.2126*bg[0]+.7152*bg[1]+.0722*bg[2])>160?'#242b31':'#fff');
+  panel.style.setProperty('--music-track',css(fg));
+ }
+ function volumeFill(){if(!vol)return;const min=Number(vol.min||0),max=Number(vol.max||1),value=Number(vol.value||0),pct=clamp((value-min)/(max-min||1)*100,0,100);vol.style.setProperty('--volume-fill',pct+'%');}
+ function sync(){if(audio){const play=document.querySelector('#play-btn');if(play){play.textContent=(audio.paused||audio.ended)?'Ⅱ':'▶';play.setAttribute('aria-label',(audio.paused||audio.ended)?'play':'pause');}}}
+ if(vol){if(audio)audio.volume=Number(vol.value||.8);vol.addEventListener('input',()=>{if(audio)audio.volume=Number(vol.value);volumeFill()});vol.addEventListener('change',volumeFill);volumeFill();}
+ if(seek&&audio){seek.addEventListener('input',()=>{if(audio.duration)audio.currentTime=Number(seek.value)/100*audio.duration});audio.addEventListener('timeupdate',()=>{if(audio.duration)seek.value=audio.currentTime/audio.duration*100});}
+ if(audio){['play','pause','ended','loadedmetadata'].forEach(ev=>audio.addEventListener(ev,()=>{sync();updatePalette()}));}
+ art.addEventListener('load',updatePalette);
+ const coverInput=document.querySelector('#cover-file');if(coverInput)coverInput.addEventListener('change',()=>setTimeout(updatePalette,150));
+ // Re-evaluate when a theme is changed, including returning to DDAY.
+ document.querySelectorAll('.theme-option').forEach(btn=>btn.addEventListener('click',()=>setTimeout(updatePalette,0)));
+ updatePalette();sync();
+})();
+</script>
+<style id="v18-music-final-style">
+.music-panel{background:var(--music-bg,var(--panel))!important;color:var(--music-text,var(--ink))!important;transition:background-color .2s,color .2s}
+.music-panel .listening,.music-panel .track,.music-panel .volume-row,.music-panel .music-actions{color:var(--music-text,var(--ink))!important}
+.music-panel .track{background:var(--music-track,var(--accent))!important;color:var(--music-text,var(--ink))!important}
+.music-panel .transport-controls .icon-btn,.music-panel .transport-controls #play-btn,.music-panel .queue-toggle{color:var(--music-control,var(--ink))!important}
+.music-panel .seek,.music-panel .volume-row input{accent-color:var(--music-control,var(--ink))!important}
+.music-panel .volume-row input[type="range"]{background:linear-gradient(to right,var(--music-control,var(--ink)) 0%,var(--music-control,var(--ink)) var(--volume-fill,80%),color-mix(in srgb,var(--music-control,var(--ink)) 25%,transparent) var(--volume-fill,80%),color-mix(in srgb,var(--music-control,var(--ink)) 25%,transparent) 100%)!important;border-radius:999px!important;overflow:hidden!important}
+.music-panel .volume-row input[type="range"]::-webkit-slider-runnable-track{background:transparent!important;border-radius:999px!important}
+.music-panel .volume-row input[type="range"]::-webkit-slider-thumb{box-shadow:none!important;background:var(--music-control,var(--ink))!important}
+.music-panel .volume-row input[type="range"]::-moz-range-track{background:transparent!important}
+.music-panel .volume-row input[type="range"]::-moz-range-progress{background:transparent!important}
+.music-panel .volume-row input[type="range"]::-moz-range-thumb{background:var(--music-control,var(--ink))!important}
+</style>
